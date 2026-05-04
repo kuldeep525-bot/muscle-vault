@@ -1,20 +1,25 @@
-import React from 'react'
+import Layout from '../components/layout/Layout'
+import Hero from '../components/sections/Hero'
+import About from '../components/sections/About'
+import Features from '../components/sections/Features'
+import Plans from '../components/sections/Plans'
+import Trainers from '../components/sections/Trainers'
+import Testimonials from '../components/sections/Testimonials'
+import Gallery from '../components/sections/Gallery'
+import Contact from '../components/sections/Contact'
 
-function Home() {
+const Home = () => {
   return (
-    <main className="min-h-screen pt-24 flex items-center justify-center">
-      
-      <div className="container-custom text-center text-white">
-        <h1 className="text-5xl font-bold">
-          Welcome to Muscle Vault
-        </h1>
-
-        <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
-          Punjab ka premium fitness destination.
-        </p>
-      </div>
-
-    </main>
+    <Layout>
+      <Hero />
+      <About />
+      <Features />
+      <Plans />
+      <Trainers />
+      <Testimonials />
+      <Gallery />
+      <Contact />
+    </Layout>
   )
 }
 
