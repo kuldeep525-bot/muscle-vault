@@ -184,8 +184,6 @@ const Footer = () => {
 
                 <span className="text-sm text-gray-500">
                   Mon–Sat: 6AM – 10PM
-                  <br />
-                  Sunday: 7AM – 8PM
                 </span>
               </li>
 
