@@ -10,7 +10,6 @@ const Signup = () => {
     email: '',
     phone: '',
     password: '',
-    confirmPassword: '',
   })
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -33,10 +32,7 @@ const Signup = () => {
       toast.error('Password kam se kam 6 characters ka hona chahiye!')
       return
     }
-    if (form.password !== form.confirmPassword) {
-      toast.error('Dono passwords match nahi kar rahe!')
-      return
-    }
+    
 
     try {
       setLoading(true)
@@ -270,31 +266,6 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Confirm Password */}
-            <div>
-              <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">
-                Confirm Password *
-              </label>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={form.confirmPassword}
-                onChange={handleChange}
-                placeholder="••••••••"
-                className={`
-                  w-full bg-[#111] border rounded-lg px-4 py-3.5
-                  text-white text-sm placeholder-gray-600
-                  focus:outline-none transition-colors duration-300
-                  ${form.confirmPassword && form.password !== form.confirmPassword
-                    ? 'border-red-500/50 focus:border-red-500'
-                    : 'border-white/10 focus:border-orange-500'
-                  }
-                `}
-              />
-              {form.confirmPassword && form.password !== form.confirmPassword && (
-                <p className="text-red-400 text-xs mt-1">Passwords match nahi kar rahe!</p>
-              )}
-            </div>
 
             {/* Terms */}
             <p className="text-gray-600 text-xs leading-relaxed">
