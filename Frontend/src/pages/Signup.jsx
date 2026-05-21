@@ -36,7 +36,7 @@ const Signup = () => {
 
     try {
       setLoading(true)
-      const { data } = await API.post('/auth/signup', {
+      const { data } = await API.post('/auth/register', {
         name: form.name,
         email: form.email,
         phone: form.phone,

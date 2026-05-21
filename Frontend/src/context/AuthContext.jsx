@@ -44,7 +44,13 @@ export const AuthProvider = ({ children }) => {
     isLoggedIn: !!token,
   }
 
-  if (loading) return null
+if (loading) {
+  return (
+    <div className="text-white flex items-center justify-center h-screen">
+      Loading...
+    </div>
+  )
+}
 
   return (
     <AuthContext.Provider value={value}>

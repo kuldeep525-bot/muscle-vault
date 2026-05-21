@@ -17,10 +17,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     if (!form.email || !form.password) {
       toast.error('Email aur password dono bharo!')
       return
     }
+
     try {
       setLoading(true)
       const { data } = await API.post('/auth/login', form)
@@ -32,7 +34,7 @@ const Login = () => {
         navigate('/')
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Login failed!')
+      toast.error(err.response?.data?.message || 'Kuch galat hua!')
     } finally {
       setLoading(false)
     }
@@ -41,25 +43,18 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex">
 
-      {/* LEFT SIDE — Image (desktop only) */}
+      {/* LEFT SIDE — Image */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80"
           alt="Gym"
           className="w-full h-full object-cover opacity-40"
         />
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 to-[#0a0a0a]"/>
-
-        {/* Content on image */}
         <div className="absolute inset-0 flex flex-col justify-between p-12">
-
-          {/* Logo */}
           <Link to="/" className="font-bebas text-2xl tracking-widest text-white">
             MUSCLE <span className="text-orange-500">VAULT</span>
           </Link>
-
-          {/* Quote */}
           <div>
             <div className="w-12 h-0.5 bg-orange-500 mb-6"/>
             <h2 className="font-bebas text-5xl tracking-wider text-white leading-tight mb-4">
@@ -72,8 +67,6 @@ const Login = () => {
               progress track karo — sab ek jagah.
             </p>
           </div>
-
-          {/* Stats */}
           <div className="flex gap-8">
             {[
               { num: '500+', label: 'Members' },
@@ -86,7 +79,6 @@ const Login = () => {
               </div>
             ))}
           </div>
-
         </div>
       </div>
 
@@ -162,7 +154,6 @@ const Login = () => {
                     transition-colors duration-300
                   "
                 />
-                {/* Show/hide password */}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
