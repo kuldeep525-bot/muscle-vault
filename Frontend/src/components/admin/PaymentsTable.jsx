@@ -1,3 +1,6 @@
+
+
+
 import { useState, useEffect } from 'react'
 import API from '../../utils/api'
 import toast from 'react-hot-toast'
@@ -17,20 +20,20 @@ const months = [
 const currentMonth = `${months[new Date().getMonth()]} ${new Date().getFullYear()}`
 
 const PaymentsTable = () => {
-  const [payments, setPayments]   = useState([])
-  const [members, setMembers]     = useState([])
-  const [loading, setLoading]     = useState(true)
+  const [payments, setPayments]         = useState([])
+  const [members, setMembers]           = useState([])
+  const [loading, setLoading]           = useState(true)
   const [statusFilter, setStatusFilter] = useState('')
   const [monthFilter, setMonthFilter]   = useState(currentMonth)
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal]       = useState(false)
+  const [saving, setSaving]             = useState(false)
   const [form, setForm] = useState({
     memberId: '',
     amount: '',
     month: currentMonth,
     status: 'paid',
-    paidOn: new Date().toISOString().split('T')[0],
+    paidAt: new Date().toISOString().split('T')[0],
   })
-  const [saving, setSaving] = useState(false)
 
   // Fetch payments
   const fetchPayments = async () => {
@@ -38,31 +41,32 @@ const PaymentsTable = () => {
       setLoading(true)
       const params = new URLSearchParams()
       if (statusFilter) params.append('status', statusFilter)
-      if (monthFilter)  params.append('month', monthFilter)
-      const { data } = await API.get(`/payments?${params}`)
-      setPayments(data.data)
+      // if (monthFilter)  params.append('month', monthFilter)
+
+      // ✅ Fix 1 — endpoint change
+      const { data } = await API.get(`/payment/getAll?${params}`)
+      setPayments(data.data || [])
     } catch {
-      toast.error('Payments load nahi hue!')
+      if (err.response?.status !== 404) {
+    toast.error('Payments load nahi hue!')
+  }
+  setPayments([])
     } finally {
       setLoading(false)
     }
   }
 
-  // Fetch members for dropdown
+  // Fetch members
   const fetchMembers = async () => {
     try {
-      const { data } = await API.get('/members')
+      // ✅ Fix 2 — endpoint change
+      const { data } = await API.get('/member/getAll')
       setMembers(data.data)
     } catch {}
   }
 
-  useEffect(() => {
-    fetchMembers()
-  }, [])
-
-  useEffect(() => {
-    fetchPayments()
-  }, [statusFilter, monthFilter])
+  useEffect(() => { fetchMembers() }, [])
+  useEffect(() => { fetchPayments() }, [statusFilter, monthFilter])
 
   // Add payment
   const handleSave = async (e) => {
@@ -73,12 +77,13 @@ const PaymentsTable = () => {
     }
     try {
       setSaving(true)
-      await API.post('/payments', {
-        member: form.memberId,
-        amount: Number(form.amount),
-        month:  form.month,
-        status: form.status,
-        paidOn: form.paidOn,
+      // ✅ Fix 3 — endpoint + field names change
+      await API.post('/payment/create', {
+        memberId: form.memberId,  // member → memberId
+        amount:   Number(form.amount),
+        month:    form.month,
+        status:   form.status,
+        paidAt:   form.paidAt,   // paidOn → paidAt
       })
       toast.success('Payment record add ho gaya!')
       setShowModal(false)
@@ -88,7 +93,7 @@ const PaymentsTable = () => {
         amount: '',
         month: currentMonth,
         status: 'paid',
-        paidOn: new Date().toISOString().split('T')[0],
+        paidAt: new Date().toISOString().split('T')[0],
       })
     } catch (err) {
       toast.error(err.response?.data?.message || 'Save nahi hua!')
@@ -97,10 +102,11 @@ const PaymentsTable = () => {
     }
   }
 
-  // Update payment status
+  // Update status
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      await API.put(`/payments/${id}`, { status: newStatus })
+      // ✅ Fix 4 — endpoint change
+      await API.put(`/payment/update/${id}`, { status: newStatus })
       toast.success('Status updated!')
       fetchPayments()
     } catch {
@@ -112,7 +118,8 @@ const PaymentsTable = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Yeh payment record delete karna chahte ho?')) return
     try {
-      await API.delete(`/payments/${id}`)
+      // ✅ Fix 5 — endpoint change
+      await API.delete(`/payment/delete/${id}`)
       toast.success('Deleted!')
       fetchPayments()
     } catch {
@@ -120,11 +127,10 @@ const PaymentsTable = () => {
     }
   }
 
-  // Summary counts
-  const paidCount   = payments.filter(p => p.status === 'paid').length
-  const dueCount    = payments.filter(p => p.status === 'due').length
+  const paidCount    = payments.filter(p => p.status === 'paid').length
+  const dueCount     = payments.filter(p => p.status === 'due').length
   const overdueCount = payments.filter(p => p.status === 'overdue').length
-  const totalAmount = payments
+  const totalAmount  = payments
     .filter(p => p.status === 'paid')
     .reduce((sum, p) => sum + p.amount, 0)
 
@@ -161,46 +167,14 @@ const PaymentsTable = () => {
       {/* SUMMARY CARDS */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {[
-          {
-            label: 'Paid',
-            value: paidCount,
-            color: 'bg-green-500/10 border-green-500/20',
-            text: 'text-green-400',
-            icon: '✅',
-          },
-          {
-            label: 'Due',
-            value: dueCount,
-            color: 'bg-yellow-500/10 border-yellow-500/20',
-            text: 'text-yellow-400',
-            icon: '⚠️',
-          },
-          {
-            label: 'Overdue',
-            value: overdueCount,
-            color: 'bg-red-500/10 border-red-500/20',
-            text: 'text-red-400',
-            icon: '❌',
-          },
-          {
-            label: 'Total Collected',
-            value: `₹${totalAmount.toLocaleString()}`,
-            color: 'bg-orange-500/10 border-orange-500/20',
-            text: 'text-orange-400',
-            icon: '💰',
-          },
+          { label: 'Paid',            value: paidCount,                       color: 'bg-green-500/10 border-green-500/20',   text: 'text-green-400',  icon: '✅' },
+          { label: 'Due',             value: dueCount,                        color: 'bg-yellow-500/10 border-yellow-500/20', text: 'text-yellow-400', icon: '⚠️' },
+          { label: 'Overdue',         value: overdueCount,                    color: 'bg-red-500/10 border-red-500/20',       text: 'text-red-400',    icon: '❌' },
+          { label: 'Total Collected', value: `₹${totalAmount.toLocaleString()}`, color: 'bg-orange-500/10 border-orange-500/20', text: 'text-orange-400', icon: '💰' },
         ].map((card, i) => (
-          <div
-            key={i}
-            className={`
-              border rounded-xl p-4
-              ${card.color}
-            `}
-          >
+          <div key={i} className={`border rounded-xl p-4 ${card.color}`}>
             <div className="text-2xl mb-2">{card.icon}</div>
-            <div className={`font-bebas text-3xl tracking-wider ${card.text}`}>
-              {card.value}
-            </div>
+            <div className={`font-bebas text-3xl tracking-wider ${card.text}`}>{card.value}</div>
             <div className="text-gray-500 text-xs mt-0.5">{card.label}</div>
           </div>
         ))}
@@ -208,31 +182,18 @@ const PaymentsTable = () => {
 
       {/* FILTERS */}
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
-
-        {/* Month filter */}
         <select
           value={monthFilter}
           onChange={(e) => setMonthFilter(e.target.value)}
-          className="
-            bg-[#111] border border-white/10
-            rounded-lg px-4 py-2.5
-            text-gray-400 text-sm
-            focus:outline-none focus:border-orange-500
-            transition-colors duration-300
-          "
+          className="bg-[#111] border border-white/10 rounded-lg px-4 py-2.5 text-gray-400 text-sm focus:outline-none focus:border-orange-500 transition-colors duration-300"
         >
           {months.map((m) => (
-            <option
-              key={m}
-              value={`${m} ${new Date().getFullYear()}`}
-              className="bg-[#111]"
-            >
+            <option key={m} value={`${m} ${new Date().getFullYear()}`} className="bg-[#111]">
               {m} {new Date().getFullYear()}
             </option>
           ))}
         </select>
 
-        {/* Status filter */}
         <div className="flex gap-2 flex-wrap">
           {['', 'paid', 'due', 'overdue'].map((s) => (
             <button
@@ -252,22 +213,15 @@ const PaymentsTable = () => {
           ))}
         </div>
 
-        {/* Refresh */}
         <button
           onClick={fetchPayments}
-          className="
-            px-4 py-2.5 border border-white/10
-            rounded-lg text-gray-500
-            hover:border-orange-500 hover:text-orange-500
-            transition-all duration-300 ml-auto
-          "
+          className="px-4 py-2.5 border border-white/10 rounded-lg text-gray-500 hover:border-orange-500 hover:text-orange-500 transition-all duration-300 ml-auto"
         >
           <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <polyline points="23 4 23 10 17 10"/>
             <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
           </svg>
         </button>
-
       </div>
 
       {/* TABLE */}
@@ -300,27 +254,17 @@ const PaymentsTable = () => {
                         <div className="h-3 bg-white/5 rounded w-16"/>
                       </td>
                     ))}
-                    <td className="px-6 py-4">
-                      <div className="h-7 bg-white/5 rounded w-20"/>
-                    </td>
+                    <td className="px-6 py-4"><div className="h-7 bg-white/5 rounded w-20"/></td>
                   </tr>
                 ))
               ) : payments.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="px-6 py-16 text-center">
                     <div className="text-4xl mb-3">💳</div>
-                    <div className="text-gray-500 text-sm">
-                      Is month ka koi payment record nahi hai
-                    </div>
+                    <div className="text-gray-500 text-sm">Is month ka koi payment record nahi hai</div>
                     <button
                       onClick={() => setShowModal(true)}
-                      className="
-                        mt-4 px-6 py-2.5
-                        border border-orange-500 text-orange-500
-                        hover:bg-orange-500 hover:text-white
-                        text-xs tracking-widest uppercase rounded-lg
-                        transition-all duration-300
-                      "
+                      className="mt-4 px-6 py-2.5 border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white text-xs tracking-widest uppercase rounded-lg transition-all duration-300"
                     >
                       Payment Add Karo
                     </button>
@@ -328,128 +272,85 @@ const PaymentsTable = () => {
                 </tr>
               ) : (
                 payments.map((payment) => (
-                  <tr
-                    key={payment._id}
-                    className="
-                      border-b border-white/5
-                      hover:bg-white/[0.02]
-                      transition-colors duration-200
-                    "
-                  >
-                    {/* Member */}
+                  <tr key={payment._id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors duration-200">
+
+                    {/* ✅ Fix 6 — field names: memberId.userId */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="
-                          w-8 h-8 rounded-full shrink-0
-                          bg-orange-500/20 border border-orange-500/30
-                          flex items-center justify-center
-                          text-orange-500 font-bebas
-                        ">
-                          {payment.member?.user?.name?.charAt(0).toUpperCase()}
+                        <div className="w-8 h-8 rounded-full shrink-0 bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-500 font-bebas">
+                          {payment.memberId?.userId?.name?.charAt(0).toUpperCase()}
                         </div>
                         <div>
                           <div className="text-white text-sm">
-                            {payment.member?.user?.name}
+                            {payment.memberId?.userId?.name}
                           </div>
                           <div className="text-gray-600 text-xs">
-                            {payment.member?.memberId}
+                            {payment.memberId?.userId?.email}
                           </div>
                         </div>
                       </div>
                     </td>
 
-                    {/* Plan */}
+                    {/* ✅ Fix 7 — planId.name */}
                     <td className="px-6 py-4">
                       <span className="text-gray-400 text-sm">
-                        {payment.member?.membershipPlan?.name || '—'}
+                        {payment.planId?.name || '—'}
                       </span>
                     </td>
 
-                    {/* Month */}
                     <td className="px-6 py-4">
-                      <span className="text-gray-400 text-sm">
-                        {payment.month}
-                      </span>
+                      <span className="text-gray-400 text-sm">{payment.month}</span>
                     </td>
 
-                    {/* Amount */}
                     <td className="px-6 py-4">
                       <span className="text-white font-medium">
                         ₹{payment.amount?.toLocaleString()}
                       </span>
                     </td>
 
-                    {/* Paid On */}
+                    {/* ✅ Fix 8 — paidOn → paidAt */}
                     <td className="px-6 py-4">
                       <span className="text-gray-500 text-sm">
-                        {payment.paidOn
-                          ? new Date(payment.paidOn).toLocaleDateString('en-IN')
+                        {payment.paidAt
+                          ? new Date(payment.paidAt).toLocaleDateString('en-IN')
                           : '—'
                         }
                       </span>
                     </td>
 
-                    {/* Status */}
                     <td className="px-6 py-4">
-                      <span className={`
-                        text-xs px-2.5 py-1 rounded-full border font-medium capitalize
-                        ${statusColors[payment.status]}
-                      `}>
+                      <span className={`text-xs px-2.5 py-1 rounded-full border font-medium capitalize ${statusColors[payment.status]}`}>
                         {payment.status}
                       </span>
                     </td>
 
-                    {/* Actions */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-
-                        {/* Mark as Paid */}
                         {payment.status !== 'paid' && (
                           <button
                             onClick={() => handleStatusUpdate(payment._id, 'paid')}
-                            className="
-                              px-3 py-1.5 text-xs tracking-wider
-                              border border-green-500/30 text-green-400
-                              hover:bg-green-500/10
-                              rounded-lg transition-all duration-200
-                            "
+                            className="px-3 py-1.5 text-xs tracking-wider border border-green-500/30 text-green-400 hover:bg-green-500/10 rounded-lg transition-all duration-200"
                           >
                             Mark Paid
                           </button>
                         )}
-
-                        {/* Mark as Due */}
                         {payment.status === 'paid' && (
                           <button
                             onClick={() => handleStatusUpdate(payment._id, 'due')}
-                            className="
-                              px-3 py-1.5 text-xs tracking-wider
-                              border border-yellow-500/30 text-yellow-400
-                              hover:bg-yellow-500/10
-                              rounded-lg transition-all duration-200
-                            "
+                            className="px-3 py-1.5 text-xs tracking-wider border border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/10 rounded-lg transition-all duration-200"
                           >
                             Mark Due
                           </button>
                         )}
-
-                        {/* Delete */}
                         <button
                           onClick={() => handleDelete(payment._id)}
-                          className="
-                            w-7 h-7 rounded-lg
-                            border border-white/10 text-gray-500
-                            hover:border-red-500/30 hover:text-red-400
-                            flex items-center justify-center
-                            transition-all duration-200
-                          "
+                          className="w-7 h-7 rounded-lg border border-white/10 text-gray-500 hover:border-red-500/30 hover:text-red-400 flex items-center justify-center transition-all duration-200"
                         >
                           <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <polyline points="3 6 5 6 21 6"/>
                             <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
                           </svg>
                         </button>
-
                       </div>
                     </td>
 
@@ -471,15 +372,9 @@ const PaymentsTable = () => {
             className="bg-[#111] border border-white/10 rounded-2xl p-6 w-full max-w-md"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal header */}
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-bebas text-xl tracking-wider text-white">
-                ADD PAYMENT
-              </h3>
-              <button
-                onClick={() => setShowModal(false)}
-                className="text-gray-500 hover:text-white transition-colors"
-              >
+              <h3 className="font-bebas text-xl tracking-wider text-white">ADD PAYMENT</h3>
+              <button onClick={() => setShowModal(false)} className="text-gray-500 hover:text-white transition-colors">
                 <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <line x1="18" y1="6" x2="6" y2="18"/>
                   <line x1="6" y1="6" x2="18" y2="18"/>
@@ -491,23 +386,17 @@ const PaymentsTable = () => {
 
               {/* Member select */}
               <div>
-                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">
-                  Member *
-                </label>
+                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Member *</label>
                 <select
                   value={form.memberId}
                   onChange={(e) => setForm({ ...form, memberId: e.target.value })}
-                  className="
-                    w-full bg-[#0d0d0d] border border-white/10
-                    rounded-lg px-4 py-3 text-gray-400 text-sm
-                    focus:outline-none focus:border-orange-500
-                    transition-colors duration-300
-                  "
+                  className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-gray-400 text-sm focus:outline-none focus:border-orange-500 transition-colors duration-300"
                 >
                   <option value="">Member select karo...</option>
+                  {/* ✅ Fix 9 — userId.name */}
                   {members.map((m) => (
                     <option key={m._id} value={m._id} className="bg-[#111]">
-                      {m.user?.name} — {m.memberId}
+                      {m.userId?.name} — {m.userId?.phone}
                     </option>
                   ))}
                 </select>
@@ -515,45 +404,26 @@ const PaymentsTable = () => {
 
               {/* Amount */}
               <div>
-                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">
-                  Amount (₹) *
-                </label>
+                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Amount (₹) *</label>
                 <input
                   type="number"
                   value={form.amount}
                   onChange={(e) => setForm({ ...form, amount: e.target.value })}
                   placeholder="999"
-                  className="
-                    w-full bg-[#0d0d0d] border border-white/10
-                    rounded-lg px-4 py-3 text-white text-sm
-                    placeholder-gray-600
-                    focus:outline-none focus:border-orange-500
-                    transition-colors duration-300
-                  "
+                  className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-orange-500 transition-colors duration-300"
                 />
               </div>
 
               {/* Month */}
               <div>
-                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">
-                  Month
-                </label>
+                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Month</label>
                 <select
                   value={form.month}
                   onChange={(e) => setForm({ ...form, month: e.target.value })}
-                  className="
-                    w-full bg-[#0d0d0d] border border-white/10
-                    rounded-lg px-4 py-3 text-gray-400 text-sm
-                    focus:outline-none focus:border-orange-500
-                    transition-colors duration-300
-                  "
+                  className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-gray-400 text-sm focus:outline-none focus:border-orange-500 transition-colors duration-300"
                 >
                   {months.map((m) => (
-                    <option
-                      key={m}
-                      value={`${m} ${new Date().getFullYear()}`}
-                      className="bg-[#111]"
-                    >
+                    <option key={m} value={`${m} ${new Date().getFullYear()}`} className="bg-[#111]">
                       {m} {new Date().getFullYear()}
                     </option>
                   ))}
@@ -562,9 +432,7 @@ const PaymentsTable = () => {
 
               {/* Status */}
               <div>
-                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">
-                  Status
-                </label>
+                <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Status</label>
                 <div className="grid grid-cols-3 gap-2">
                   {['paid', 'due', 'overdue'].map((s) => (
                     <button
@@ -586,38 +454,23 @@ const PaymentsTable = () => {
                 </div>
               </div>
 
-              {/* Paid On date */}
+              {/* Paid On */}
               {form.status === 'paid' && (
                 <div>
-                  <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">
-                    Paid On Date
-                  </label>
+                  <label className="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Paid On Date</label>
                   <input
                     type="date"
-                    value={form.paidOn}
-                    onChange={(e) => setForm({ ...form, paidOn: e.target.value })}
-                    className="
-                      w-full bg-[#0d0d0d] border border-white/10
-                      rounded-lg px-4 py-3 text-gray-400 text-sm
-                      focus:outline-none focus:border-orange-500
-                      transition-colors duration-300
-                    "
+                    value={form.paidAt}
+                    onChange={(e) => setForm({ ...form, paidAt: e.target.value })}
+                    className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-gray-400 text-sm focus:outline-none focus:border-orange-500 transition-colors duration-300"
                   />
                 </div>
               )}
 
-              {/* Save button */}
               <button
                 type="submit"
                 disabled={saving}
-                className="
-                  w-full py-3.5 mt-2
-                  bg-orange-500 hover:bg-orange-600
-                  disabled:opacity-50 disabled:cursor-not-allowed
-                  text-white text-xs tracking-widest uppercase font-medium
-                  rounded-lg transition-all duration-300
-                  flex items-center justify-center gap-2
-                "
+                className="w-full py-3.5 mt-2 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs tracking-widest uppercase font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
                 {saving ? (
                   <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">

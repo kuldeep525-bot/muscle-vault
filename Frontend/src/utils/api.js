@@ -1,74 +1,3 @@
-// // import axios from "axios";
-
-// // // =============================================
-// // // BASE URL — Backend ka address
-// // // Jab bhi API call karenge yeh URL use hoga
-// // // =============================================
-// // const API = axios.create({
-// //   baseURL: "http://localhost:8000/api",
-// // });
-
-// // // =============================================
-// // // INTERCEPTOR — Har request se pehle chalta hai
-// // // Token localStorage mein hai toh
-// // // automatically har request ke saath bhejta hai
-// // // Jaise — har chitthi ke saath ID card lagana
-// // // =============================================
-// // API.interceptors.request.use((config) => {
-// //   const token = localStorage.getItem("token");
-// //   if (token) {
-// //     config.headers.Authorization = `Bearer ${token}`;
-// //   }
-// //   return config;
-// // });
-
-// // // =============================================
-// // // INTERCEPTOR — Har response ke baad chalta hai
-// // // Agar 401 aaya (token expire) toh
-// // // localStorage clear karo aur login pe bhejo
-// // // =============================================
-// // API.interceptors.response.use(
-// //   (response) => response,
-// //   (error) => {
-// //     if (error.response?.status === 401) {
-// //       localStorage.removeItem("token");
-// //       localStorage.removeItem("user");
-// //       window.location.href = "/login";
-// //     }
-// //     return Promise.reject(error);
-// //   },
-// // );
-
-// // export default API;
-
-// import axios from "axios";
-
-// const API = axios.create({
-//   baseURL: import.meta.env.VITE_API_URL,
-// });
-
-// API.interceptors.request.use((config) => {
-//   const token = localStorage.getItem("token");
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//   return config;
-// });
-
-// API.interceptors.response.use(
-//   (response) => response,
-//   (error) => {
-//     if (error.response?.status === 401) {
-//       localStorage.removeItem("token");
-//       localStorage.removeItem("user");
-//       window.location.href = "/login";
-//     }
-//     return Promise.reject(error);
-//   },
-// );
-
-// export default API;
-
 import axios from "axios";
 
 const API = axios.create({
@@ -86,14 +15,17 @@ API.interceptors.request.use((config) => {
 API.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Login page pe 401 aaye toh redirect mat karo
     const isLoginPage = window.location.pathname === "/login";
 
     if (error.response?.status === 401 && !isLoginPage) {
+      // Token expire — logout aur login pe bhejo
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.href = "/login";
     }
+
+    // Login page pe 401 aaye — sirf error return karo
+    // Login.jsx ka catch handle karega
     return Promise.reject(error);
   },
 );

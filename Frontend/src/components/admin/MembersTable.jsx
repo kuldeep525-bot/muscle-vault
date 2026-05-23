@@ -1,30 +1,420 @@
+// import { useState, useEffect } from 'react'
+// import API from '../../utils/api'
+// import toast from 'react-hot-toast'
+
+// const statusColors = {
+//   active:    'bg-green-500/10 text-green-400 border-green-500/20',
+//   expired:   'bg-red-500/10 text-red-400 border-red-500/20',
+//   pending:   'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+//   cancelled: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
+// }
+
+// const MembersTable = () => {
+//   const [members, setMembers]   = useState([])
+//   const [loading, setLoading]   = useState(true)
+//   const [search, setSearch]     = useState('')
+//   const [status, setStatus]     = useState('')
+//   const [selected, setSelected] = useState(null)
+//   const [showModal, setShowModal] = useState(false)
+
+//   // Fetch members
+//   const fetchMembers = async () => {
+//     try {
+//       setLoading(true)
+//       const params = new URLSearchParams()
+//       if (search) params.append('search', search)
+//       if (status) params.append('status', status)
+//       const { data } = await API.get(`/members?${params}`)
+//       setMembers(data.data)
+//     } catch {
+//       toast.error('Members load nahi hue!')
+//     } finally {
+//       setLoading(false)
+//     }
+//   }
+
+//   useEffect(() => {
+//     fetchMembers()
+//   }, [search, status])
+
+//   // Delete member
+//   const handleDelete = async (id) => {
+//     if (!window.confirm('Kya aap sure hain? Yeh member delete ho jayega!')) return
+//     try {
+//       await API.delete(`/members/${id}`)
+//       toast.success('Member deleted!')
+//       fetchMembers()
+//     } catch {
+//       toast.error('Delete nahi hua!')
+//     }
+//   }
+
+//   // Update status
+//   const handleStatusUpdate = async (id, newStatus) => {
+//     try {
+//       await API.put(`/members/${id}`, { membershipStatus: newStatus })
+//       toast.success('Status updated!')
+//       fetchMembers()
+//       setShowModal(false)
+//     } catch {
+//       toast.error('Update nahi hua!')
+//     }
+//   }
+
+//   return (
+//     <div>
+
+//       {/* HEADER */}
+//       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+//         <div>
+//           <h2 className="font-bebas text-2xl tracking-wider text-white">
+//             ALL MEMBERS
+//           </h2>
+//           <p className="text-gray-500 text-xs mt-0.5">
+//             {members.length} members found
+//           </p>
+//         </div>
+//       </div>
+
+//       {/* FILTERS */}
+//       <div className="flex flex-col sm:flex-row gap-3 mb-6">
+
+//         {/* Search */}
+//         <div className="relative flex-1">
+//           <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+//             <circle cx="11" cy="11" r="8"/>
+//             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+//           </svg>
+//           <input
+//             type="text"
+//             placeholder="Search by name, email, ID..."
+//             value={search}
+//             onChange={(e) => setSearch(e.target.value)}
+//             className="
+//               w-full bg-[#111] border border-white/10
+//               rounded-lg pl-10 pr-4 py-2.5
+//               text-white text-sm placeholder-gray-600
+//               focus:outline-none focus:border-orange-500
+//               transition-colors duration-300
+//             "
+//           />
+//         </div>
+
+//         {/* Status filter */}
+//         <select
+//           value={status}
+//           onChange={(e) => setStatus(e.target.value)}
+//           className="
+//             bg-[#111] border border-white/10
+//             rounded-lg px-4 py-2.5
+//             text-gray-400 text-sm
+//             focus:outline-none focus:border-orange-500
+//             transition-colors duration-300
+//           "
+//         >
+//           <option value="">All Status</option>
+//           <option value="active">Active</option>
+//           <option value="expired">Expired</option>
+//           <option value="pending">Pending</option>
+//           <option value="cancelled">Cancelled</option>
+//         </select>
+
+//         {/* Refresh */}
+//         <button
+//           onClick={fetchMembers}
+//           className="
+//             px-4 py-2.5 border border-white/10
+//             rounded-lg text-gray-500
+//             hover:border-orange-500 hover:text-orange-500
+//             transition-all duration-300
+//           "
+//         >
+//           <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+//             <polyline points="23 4 23 10 17 10"/>
+//             <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+//           </svg>
+//         </button>
+
+//       </div>
+
+//       {/* TABLE */}
+//       <div className="bg-[#111] border border-white/5 rounded-xl overflow-hidden">
+
+//         {/* Desktop table */}
+//         <div className="overflow-x-auto">
+//           <table className="w-full">
+//             <thead>
+//               <tr className="border-b border-white/5">
+//                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Member</th>
+//                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">ID</th>
+//                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Plan</th>
+//                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Status</th>
+//                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Expiry</th>
+//                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Actions</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {loading ? (
+//                 // Skeleton rows
+//                 [...Array(5)].map((_, i) => (
+//                   <tr key={i} className="border-b border-white/5 animate-pulse">
+//                     <td className="px-6 py-4">
+//                       <div className="flex items-center gap-3">
+//                         <div className="w-9 h-9 rounded-full bg-white/5"/>
+//                         <div>
+//                           <div className="h-3 bg-white/5 rounded w-24 mb-1"/>
+//                           <div className="h-2 bg-white/5 rounded w-32"/>
+//                         </div>
+//                       </div>
+//                     </td>
+//                     <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-16"/></td>
+//                     <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-20"/></td>
+//                     <td className="px-6 py-4"><div className="h-5 bg-white/5 rounded w-16"/></td>
+//                     <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-20"/></td>
+//                     <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-16"/></td>
+//                   </tr>
+//                 ))
+//               ) : members.length === 0 ? (
+//                 <tr>
+//                   <td colSpan={6} className="px-6 py-16 text-center">
+//                     <div className="text-4xl mb-3">👥</div>
+//                     <div className="text-gray-500 text-sm">Koi member nahi mila</div>
+//                   </td>
+//                 </tr>
+//               ) : (
+//                 members.map((member) => (
+//                   <tr
+//                     key={member._id}
+//                     className="
+//                       border-b border-white/5
+//                       hover:bg-white/[0.02]
+//                       transition-colors duration-200
+//                     "
+//                   >
+//                     {/* Member info */}
+//                     <td className="px-6 py-4">
+//                       <div className="flex items-center gap-3">
+//                         <div className="
+//                           w-9 h-9 rounded-full
+//                           bg-orange-500/20 border border-orange-500/30
+//                           flex items-center justify-center
+//                           text-orange-500 font-bebas text-lg
+//                           shrink-0
+//                         ">
+//                           {member.user?.name?.charAt(0).toUpperCase()}
+//                         </div>
+//                         <div>
+//                           <div className="text-white text-sm font-medium">
+//                             {member.user?.name}
+//                           </div>
+//                           <div className="text-gray-600 text-xs">
+//                             {member.user?.email}
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </td>
+
+//                     {/* Member ID */}
+//                     <td className="px-6 py-4">
+//                       <span className="text-gray-400 text-xs font-mono bg-white/5 px-2 py-1 rounded">
+//                         {member.memberId || 'N/A'}
+//                       </span>
+//                     </td>
+
+//                     {/* Plan */}
+//                     <td className="px-6 py-4">
+//                       <span className="text-gray-300 text-sm">
+//                         {member.membershipPlan?.name || 'No Plan'}
+//                       </span>
+//                     </td>
+
+//                     {/* Status */}
+//                     <td className="px-6 py-4">
+//                       <span className={`
+//                         text-xs px-2.5 py-1 rounded-full border
+//                         font-medium capitalize
+//                         ${statusColors[member.membershipStatus]}
+//                       `}>
+//                         {member.membershipStatus}
+//                       </span>
+//                     </td>
+
+//                     {/* Expiry */}
+//                     <td className="px-6 py-4">
+//                       <span className="text-gray-500 text-xs">
+//                         {member.membershipEndDate
+//                           ? new Date(member.membershipEndDate).toLocaleDateString('en-IN')
+//                           : '—'
+//                         }
+//                       </span>
+//                     </td>
+
+//                     {/* Actions */}
+//                     <td className="px-6 py-4">
+//                       <div className="flex items-center gap-2">
+
+//                         {/* View/Edit */}
+//                         <button
+//                           onClick={() => { setSelected(member); setShowModal(true) }}
+//                           className="
+//                             w-8 h-8 rounded-lg
+//                             bg-white/5 hover:bg-orange-500/10
+//                             text-gray-500 hover:text-orange-500
+//                             flex items-center justify-center
+//                             transition-all duration-200
+//                           "
+//                         >
+//                           <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+//                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+//                             <circle cx="12" cy="12" r="3"/>
+//                           </svg>
+//                         </button>
+
+//                         {/* Delete */}
+//                         <button
+//                           onClick={() => handleDelete(member._id)}
+//                           className="
+//                             w-8 h-8 rounded-lg
+//                             bg-white/5 hover:bg-red-500/10
+//                             text-gray-500 hover:text-red-400
+//                             flex items-center justify-center
+//                             transition-all duration-200
+//                           "
+//                         >
+//                           <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+//                             <polyline points="3 6 5 6 21 6"/>
+//                             <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+//                             <path d="M10 11v6M14 11v6"/>
+//                             <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+//                           </svg>
+//                         </button>
+
+//                       </div>
+//                     </td>
+//                   </tr>
+//                 ))
+//               )}
+//             </tbody>
+//           </table>
+//         </div>
+//       </div>
+
+//       {/* MEMBER DETAIL MODAL */}
+//       {showModal && selected && (
+//         <div
+//           className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+//           onClick={() => setShowModal(false)}
+//         >
+//           <div
+//             className="bg-[#111] border border-white/10 rounded-2xl p-6 w-full max-w-md"
+//             onClick={(e) => e.stopPropagation()}
+//           >
+//             {/* Modal header */}
+//             <div className="flex items-center justify-between mb-6">
+//               <h3 className="font-bebas text-xl tracking-wider text-white">
+//                 MEMBER DETAILS
+//               </h3>
+//               <button
+//                 onClick={() => setShowModal(false)}
+//                 className="text-gray-500 hover:text-white transition-colors"
+//               >
+//                 <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+//                   <line x1="18" y1="6" x2="6" y2="18"/>
+//                   <line x1="6" y1="6" x2="18" y2="18"/>
+//                 </svg>
+//               </button>
+//             </div>
+
+//             {/* Member info */}
+//             <div className="flex items-center gap-4 mb-6 p-4 bg-[#0d0d0d] rounded-xl">
+//               <div className="
+//                 w-14 h-14 rounded-full
+//                 bg-orange-500/20 border-2 border-orange-500/30
+//                 flex items-center justify-center
+//                 text-orange-500 font-bebas text-2xl
+//               ">
+//                 {selected.user?.name?.charAt(0).toUpperCase()}
+//               </div>
+//               <div>
+//                 <div className="text-white font-medium">{selected.user?.name}</div>
+//                 <div className="text-gray-500 text-sm">{selected.user?.email}</div>
+//                 <div className="text-gray-600 text-xs mt-0.5">{selected.user?.phone || 'No phone'}</div>
+//               </div>
+//             </div>
+
+//             {/* Details grid */}
+//             <div className="grid grid-cols-2 gap-3 mb-6">
+//               {[
+//                 { label: 'Member ID',  value: selected.memberId || 'N/A' },
+//                 { label: 'Plan',       value: selected.membershipPlan?.name || 'No Plan' },
+//                 { label: 'Status',     value: selected.membershipStatus },
+//                 { label: 'Join Date',  value: new Date(selected.joinDate).toLocaleDateString('en-IN') },
+//                 { label: 'Start Date', value: selected.membershipStartDate ? new Date(selected.membershipStartDate).toLocaleDateString('en-IN') : '—' },
+//                 { label: 'End Date',   value: selected.membershipEndDate   ? new Date(selected.membershipEndDate).toLocaleDateString('en-IN')   : '—' },
+//               ].map((item) => (
+//                 <div key={item.label} className="bg-[#0d0d0d] rounded-lg p-3">
+//                   <div className="text-gray-600 text-xs tracking-wider uppercase mb-1">{item.label}</div>
+//                   <div className="text-white text-sm capitalize">{item.value}</div>
+//                 </div>
+//               ))}
+//             </div>
+
+//             {/* Update status */}
+//             <div className="mb-4">
+//               <div className="text-gray-500 text-xs tracking-wider uppercase mb-2">
+//                 Update Status
+//               </div>
+//               <div className="grid grid-cols-2 gap-2">
+//                 {['active', 'expired', 'pending', 'cancelled'].map((s) => (
+//                   <button
+//                     key={s}
+//                     onClick={() => handleStatusUpdate(selected._id, s)}
+//                     className={`
+//                       py-2 rounded-lg text-xs tracking-wider uppercase
+//                       border transition-all duration-200 capitalize
+//                       ${selected.membershipStatus === s
+//                         ? 'bg-orange-500 border-orange-500 text-white'
+//                         : 'border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+//                       }
+//                     `}
+//                   >
+//                     {s}
+//                   </button>
+//                 ))}
+//               </div>
+//             </div>
+
+//           </div>
+//         </div>
+//       )}
+
+//     </div>
+//   )
+// }
+
+// export default MembersTable
+
 import { useState, useEffect } from 'react'
 import API from '../../utils/api'
 import toast from 'react-hot-toast'
 
 const statusColors = {
   active:    'bg-green-500/10 text-green-400 border-green-500/20',
-  expired:   'bg-red-500/10 text-red-400 border-red-500/20',
-  pending:   'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-  cancelled: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
+  nonActive: 'bg-red-500/10 text-red-400 border-red-500/20',
 }
 
 const MembersTable = () => {
-  const [members, setMembers]   = useState([])
-  const [loading, setLoading]   = useState(true)
-  const [search, setSearch]     = useState('')
-  const [status, setStatus]     = useState('')
-  const [selected, setSelected] = useState(null)
+  const [members, setMembers]     = useState([])
+  const [loading, setLoading]     = useState(true)
+  const [search, setSearch]       = useState('')
+  const [selected, setSelected]   = useState(null)
   const [showModal, setShowModal] = useState(false)
 
   // Fetch members
   const fetchMembers = async () => {
     try {
       setLoading(true)
-      const params = new URLSearchParams()
-      if (search) params.append('search', search)
-      if (status) params.append('status', status)
-      const { data } = await API.get(`/members?${params}`)
+      const { data } = await API.get('/member/getAll')
       setMembers(data.data)
     } catch {
       toast.error('Members load nahi hue!')
@@ -35,24 +425,63 @@ const MembersTable = () => {
 
   useEffect(() => {
     fetchMembers()
-  }, [search, status])
+  }, [])
 
   // Delete member
-  const handleDelete = async (id) => {
-    if (!window.confirm('Kya aap sure hain? Yeh member delete ho jayega!')) return
-    try {
-      await API.delete(`/members/${id}`)
-      toast.success('Member deleted!')
-      fetchMembers()
-    } catch {
-      toast.error('Delete nahi hua!')
-    }
-  }
+  // const handleDelete = async (id) => {
+  //   if (!window.confirm('Kya aap sure hain? Yeh member delete ho jayega!')) return
+  //   try {
+  //     await API.delete(`/member/deleteMember/${id}`)
+  //     toast.success('Member deleted!')
+  //     fetchMembers()
+  //   } catch {
+  //     toast.error('Delete nahi hua!')
+  //   }
+  // }
+
+  const handleDelete = (id) => {
+  toast.custom((t) => (
+    <div
+      className="bg-[#111] border border-white/10 p-4 rounded-lg shadow-lg flex flex-col gap-3 w-[280px]"
+    >
+      <p className="text-white text-sm">
+        Kya aap sure hain? Yeh member delete ho jayega!
+      </p>
+
+      <div className="flex justify-end gap-2">
+        <button
+          onClick={() => toast.dismiss(t.id)}
+          className="px-3 py-1 text-xs rounded-md border border-white/10 text-gray-400 hover:text-white"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={async () => {
+            toast.dismiss(t.id)
+            try {
+              await API.delete(`/member/deleteMember/${id}`)
+              toast.success('Member deleted!')
+              fetchMembers()
+            } catch {
+              toast.error('Delete nahi hua!')
+            }
+          }}
+          className="px-3 py-1 text-xs rounded-md bg-red-500 text-white hover:bg-red-600"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  ))
+}
 
   // Update status
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      await API.put(`/members/${id}`, { membershipStatus: newStatus })
+      await API.put(`/member/updateMember/${id}`, {
+        membershipStatus: newStatus
+      })
       toast.success('Status updated!')
       fetchMembers()
       setShowModal(false)
@@ -60,6 +489,15 @@ const MembersTable = () => {
       toast.error('Update nahi hua!')
     }
   }
+
+  // Search filter — frontend se
+  const filteredMembers = members.filter((m) => {
+    if (!search) return true
+    const name  = m.userId?.name?.toLowerCase() || ''
+    const email = m.userId?.email?.toLowerCase() || ''
+    return name.includes(search.toLowerCase()) ||
+           email.includes(search.toLowerCase())
+  })
 
   return (
     <div>
@@ -71,7 +509,7 @@ const MembersTable = () => {
             ALL MEMBERS
           </h2>
           <p className="text-gray-500 text-xs mt-0.5">
-            {members.length} members found
+            {filteredMembers.length} members found
           </p>
         </div>
       </div>
@@ -81,13 +519,14 @@ const MembersTable = () => {
 
         {/* Search */}
         <div className="relative flex-1">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600"
+            width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
           <input
             type="text"
-            placeholder="Search by name, email, ID..."
+            placeholder="Search by name, email..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="
@@ -99,25 +538,6 @@ const MembersTable = () => {
             "
           />
         </div>
-
-        {/* Status filter */}
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-          className="
-            bg-[#111] border border-white/10
-            rounded-lg px-4 py-2.5
-            text-gray-400 text-sm
-            focus:outline-none focus:border-orange-500
-            transition-colors duration-300
-          "
-        >
-          <option value="">All Status</option>
-          <option value="active">Active</option>
-          <option value="expired">Expired</option>
-          <option value="pending">Pending</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
 
         {/* Refresh */}
         <button
@@ -139,23 +559,20 @@ const MembersTable = () => {
 
       {/* TABLE */}
       <div className="bg-[#111] border border-white/5 rounded-xl overflow-hidden">
-
-        {/* Desktop table */}
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/5">
                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Member</th>
-                <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">ID</th>
                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Plan</th>
                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Status</th>
-                <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Expiry</th>
+                <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Start Date</th>
+                <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">End Date</th>
                 <th className="text-left px-6 py-4 text-xs tracking-widest uppercase text-gray-600 font-medium">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loading ? (
-                // Skeleton rows
                 [...Array(5)].map((_, i) => (
                   <tr key={i} className="border-b border-white/5 animate-pulse">
                     <td className="px-6 py-4">
@@ -167,14 +584,17 @@ const MembersTable = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-16"/></td>
-                    <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-20"/></td>
-                    <td className="px-6 py-4"><div className="h-5 bg-white/5 rounded w-16"/></td>
-                    <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-20"/></td>
-                    <td className="px-6 py-4"><div className="h-3 bg-white/5 rounded w-16"/></td>
+                    {[...Array(4)].map((_, j) => (
+                      <td key={j} className="px-6 py-4">
+                        <div className="h-3 bg-white/5 rounded w-16"/>
+                      </td>
+                    ))}
+                    <td className="px-6 py-4">
+                      <div className="h-7 bg-white/5 rounded w-16"/>
+                    </td>
                   </tr>
                 ))
-              ) : members.length === 0 ? (
+              ) : filteredMembers.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-16 text-center">
                     <div className="text-4xl mb-3">👥</div>
@@ -182,7 +602,7 @@ const MembersTable = () => {
                   </td>
                 </tr>
               ) : (
-                members.map((member) => (
+                filteredMembers.map((member) => (
                   <tr
                     key={member._id}
                     className="
@@ -198,54 +618,52 @@ const MembersTable = () => {
                           w-9 h-9 rounded-full
                           bg-orange-500/20 border border-orange-500/30
                           flex items-center justify-center
-                          text-orange-500 font-bebas text-lg
-                          shrink-0
+                          text-orange-500 font-bebas text-lg shrink-0
                         ">
-                          {member.user?.name?.charAt(0).toUpperCase()}
+                          {member.userId?.name?.charAt(0).toUpperCase()}
                         </div>
                         <div>
                           <div className="text-white text-sm font-medium">
-                            {member.user?.name}
+                            {member.userId?.name}
                           </div>
                           <div className="text-gray-600 text-xs">
-                            {member.user?.email}
+                            {member.userId?.email}
+                          </div>
+                          <div className="text-gray-700 text-xs">
+                            {member.userId?.phone}
                           </div>
                         </div>
                       </div>
                     </td>
 
-                    {/* Member ID */}
-                    <td className="px-6 py-4">
-                      <span className="text-gray-400 text-xs font-mono bg-white/5 px-2 py-1 rounded">
-                        {member.memberId || 'N/A'}
-                      </span>
-                    </td>
-
                     {/* Plan */}
                     <td className="px-6 py-4">
                       <span className="text-gray-300 text-sm">
-                        {member.membershipPlan?.name || 'No Plan'}
+                        {member.planId?.name || 'No Plan'}
                       </span>
                     </td>
 
                     {/* Status */}
                     <td className="px-6 py-4">
                       <span className={`
-                        text-xs px-2.5 py-1 rounded-full border
-                        font-medium capitalize
-                        ${statusColors[member.membershipStatus]}
+                        text-xs px-2.5 py-1 rounded-full border font-medium capitalize
+                        ${statusColors[member.membershipStatus] || 'bg-gray-500/10 text-gray-400 border-gray-500/20'}
                       `}>
                         {member.membershipStatus}
                       </span>
                     </td>
 
-                    {/* Expiry */}
+                    {/* Start Date */}
                     <td className="px-6 py-4">
                       <span className="text-gray-500 text-xs">
-                        {member.membershipEndDate
-                          ? new Date(member.membershipEndDate).toLocaleDateString('en-IN')
-                          : '—'
-                        }
+                        {member.membershipStart || '—'}
+                      </span>
+                    </td>
+
+                    {/* End Date */}
+                    <td className="px-6 py-4">
+                      <span className="text-gray-500 text-xs">
+                        {member.membershipEnd || '—'}
                       </span>
                     </td>
 
@@ -253,7 +671,7 @@ const MembersTable = () => {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
 
-                        {/* View/Edit */}
+                        {/* View */}
                         <button
                           onClick={() => { setSelected(member); setShowModal(true) }}
                           className="
@@ -333,39 +751,47 @@ const MembersTable = () => {
                 flex items-center justify-center
                 text-orange-500 font-bebas text-2xl
               ">
-                {selected.user?.name?.charAt(0).toUpperCase()}
+                {selected.userId?.name?.charAt(0).toUpperCase()}
               </div>
               <div>
-                <div className="text-white font-medium">{selected.user?.name}</div>
-                <div className="text-gray-500 text-sm">{selected.user?.email}</div>
-                <div className="text-gray-600 text-xs mt-0.5">{selected.user?.phone || 'No phone'}</div>
+                <div className="text-white font-medium">
+                  {selected.userId?.name}
+                </div>
+                <div className="text-gray-500 text-sm">
+                  {selected.userId?.email}
+                </div>
+                <div className="text-gray-600 text-xs mt-0.5">
+                  {selected.userId?.phone || 'No phone'}
+                </div>
               </div>
             </div>
 
             {/* Details grid */}
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[
-                { label: 'Member ID',  value: selected.memberId || 'N/A' },
-                { label: 'Plan',       value: selected.membershipPlan?.name || 'No Plan' },
+                { label: 'Plan',       value: selected.planId?.name || 'No Plan' },
                 { label: 'Status',     value: selected.membershipStatus },
-                { label: 'Join Date',  value: new Date(selected.joinDate).toLocaleDateString('en-IN') },
-                { label: 'Start Date', value: selected.membershipStartDate ? new Date(selected.membershipStartDate).toLocaleDateString('en-IN') : '—' },
-                { label: 'End Date',   value: selected.membershipEndDate   ? new Date(selected.membershipEndDate).toLocaleDateString('en-IN')   : '—' },
+                { label: 'Start Date', value: selected.membershipStart || '—' },
+                { label: 'End Date',   value: selected.membershipEnd   || '—' },
               ].map((item) => (
                 <div key={item.label} className="bg-[#0d0d0d] rounded-lg p-3">
-                  <div className="text-gray-600 text-xs tracking-wider uppercase mb-1">{item.label}</div>
-                  <div className="text-white text-sm capitalize">{item.value}</div>
+                  <div className="text-gray-600 text-xs tracking-wider uppercase mb-1">
+                    {item.label}
+                  </div>
+                  <div className="text-white text-sm capitalize">
+                    {item.value}
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Update status */}
-            <div className="mb-4">
+            <div>
               <div className="text-gray-500 text-xs tracking-wider uppercase mb-2">
                 Update Status
               </div>
               <div className="grid grid-cols-2 gap-2">
-                {['active', 'expired', 'pending', 'cancelled'].map((s) => (
+                {['active', 'nonActive'].map((s) => (
                   <button
                     key={s}
                     onClick={() => handleStatusUpdate(selected._id, s)}

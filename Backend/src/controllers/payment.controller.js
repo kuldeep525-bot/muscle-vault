@@ -6,7 +6,7 @@ export const createPayment = async (req, res) => {
   try {
     const { memberId, planId, amount, month, status, paidAt } = req.body;
 
-    if (!memberId || !planId || !amount || !month) {
+    if (!memberId || !amount || !month) {
       return res.status(400).json({
         success: false,
         message: "All fields required",
