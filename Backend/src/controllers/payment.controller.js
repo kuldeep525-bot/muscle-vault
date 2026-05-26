@@ -24,7 +24,8 @@ export const createPayment = async (req, res) => {
 
     const payment = await Payment.create({
       memberId,
-      planId: member.planId,
+      // planId: member.planId,
+      planId,
       amount,
       month,
       status: status || "due",
@@ -50,6 +51,54 @@ export const createPayment = async (req, res) => {
     });
   }
 };
+// export const createPayment = async (req, res) => {
+//   try {
+//     const { memberId, amount, month, status, paidAt } = req.body;
+
+//     if (!memberId || !amount || !month) {
+//       return res.status(400).json({
+//         success: false,
+//         message: "All fields required",
+//       });
+//     }
+
+//     const member = await Member.findById(memberId);
+//     if (!member) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "Member not found",
+//       });
+//     }
+
+//     const payment = await Payment.create({
+//       memberId,
+//       planId: member.planId, // ← member se lo
+//       amount,
+//       month,
+//       status: status || "due",
+//       paidAt: status === "paid" ? paidAt || new Date() : null,
+//     });
+
+//     // Payment paid hone pe membership active karo
+//     if (status === "paid") {
+//       await Member.findByIdAndUpdate(memberId, {
+//         membershipStatus: "active",
+//       });
+//     }
+
+//     return res.status(201).json({
+//       success: true,
+//       message: "Payment created successfully",
+//       data: payment,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(500).json({
+//       success: false,
+//       message: "Internal server error",
+//     });
+//   }
+// };
 
 // GET ALL PAYMENTS
 export const getAllPayments = async (req, res) => {

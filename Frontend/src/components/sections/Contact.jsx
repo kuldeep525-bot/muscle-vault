@@ -17,22 +17,41 @@ const Contact = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!form.name || !form.email || !form.subject || !form.message) {
-      toast.error('Saare fields fill karo!')
-      return
-    }
-    try {
-      setLoading(true)
-      await API.post('/inquiries', form)
-      toast.success('Message bhej diya! Hum jald hi contact karenge.')
-      setForm({ name: '', email: '', phone: '', subject: '', message: '' })
-    } catch (err) {
-      toast.error('Kuch problem aayi, dobara try karo.')
-    } finally {
-      setLoading(false)
-    }
+  e.preventDefault()
+
+  if (!form.name || !form.email || !form.subject || !form.message) {
+    toast.error('Saare fields fill karo!')
+    return
   }
+
+  try {
+    setLoading(true)
+
+    const { data } = await API.post(
+      '/inquiry/create',
+      form
+    )
+
+    toast.success(data.message)
+
+    setForm({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    })
+
+  } catch (err) {
+
+    toast.error(
+      err.response?.data?.message || 'Kuch problem aayi, dobara try karo.'
+    )
+
+  } finally {
+    setLoading(false)
+  }
+}
 
   return (
     <section id="contact" className="section-padding bg-[#0d0d0d] relative overflow-hidden">

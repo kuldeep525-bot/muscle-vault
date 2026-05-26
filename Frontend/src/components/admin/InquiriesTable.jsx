@@ -16,35 +16,59 @@ const InquiriesTable = () => {
   const [selected, setSelected]     = useState(null)
   const [showModal, setShowModal]   = useState(false)
 
-  const fetchInquiries = async () => {
-    try {
-      setLoading(true)
-      const params = new URLSearchParams()
-      if (statusFilter) params.append('status', statusFilter)
-      const { data } = await API.get(`/inquiries?${params}`)
-      setInquiries(data.data)
-    } catch {
-      toast.error('Inquiries load nahi hui!')
-    } finally {
-      setLoading(false)
+const fetchInquiries = async () => {
+  try {
+    setLoading(true)
+
+    const params = new URLSearchParams()
+
+    if (statusFilter) {
+      params.append('status', statusFilter)
     }
+
+    const { data } = await API.get(
+      `/inquiry/getAll?${params.toString()}`
+    )
+
+    setInquiries(data.data || [])
+
+  } catch (error) {
+    toast.error('Inquiries load nahi hui!')
+  } finally {
+    setLoading(false)
   }
+}
 
   useEffect(() => { fetchInquiries() }, [statusFilter])
 
   // Update status
   const handleStatusUpdate = async (id, newStatus) => {
-    try {
-      await API.put(`/inquiries/${id}`, { status: newStatus })
-      toast.success('Status updated!')
-      fetchInquiries()
-      if (selected?._id === id) {
-        setSelected({ ...selected, status: newStatus })
+  try {
+
+    const { data } = await API.put(
+      `/inquiry/update/${id}`,
+      {
+        status: newStatus
       }
-    } catch {
-      toast.error('Update nahi hua!')
+    )
+
+    toast.success(data.message)
+
+    fetchInquiries()
+
+    if (selected?._id === id) {
+      setSelected({
+        ...selected,
+        status: newStatus
+      })
     }
+
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message || 'Update nahi hua!'
+    )
   }
+}
 
   // Open detail modal
   const handleView = async (inquiry) => {
@@ -55,6 +79,24 @@ const InquiriesTable = () => {
       await handleStatusUpdate(inquiry._id, 'read')
     }
   }
+
+  const handleDelete = async (id) => {
+  try {
+
+    await API.delete(`/inquiry/delete/${id}`)
+
+    toast.success('Inquiry deleted!')
+
+    fetchInquiries()
+
+    if (selected?._id === id) {
+      setShowModal(false)
+    }
+
+  } catch (error) {
+    toast.error('Delete nahi hua!')
+  }
+}
 
   // Time ago
   const timeAgo = (dateStr) => {
@@ -314,6 +356,22 @@ const InquiriesTable = () => {
                 ))}
               </div>
             </div>
+
+            {/* DELETE BUTTON */}
+<div className="mt-5">
+  <button
+    onClick={() => handleDelete(selected._id)}
+    className="
+      w-full py-3 rounded-lg
+      bg-red-500/10 border border-red-500/20
+      text-red-400
+      hover:bg-red-500 hover:text-white
+      transition-all duration-200
+    "
+  >
+    Delete Inquiry
+  </button>
+</div>
 
           </div>
         </div>

@@ -1,4 +1,5 @@
 import Member from "../models/member.model.js";
+import Plan from "../models/plan.model.js";
 
 export const getAllMember = async (req, res) => {
   try {
@@ -150,10 +151,10 @@ export const deleteMember = async (req, res) => {
 
 export const assignPlan = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { _id } = req.params;
     const { planId } = req.body;
 
-    const member = await Member.findById(id);
+    const member = await Member.findById(_id);
 
     if (!member) {
       return res.status(404).json({
