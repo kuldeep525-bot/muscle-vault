@@ -53,18 +53,18 @@ const Gallery = () => {
     <section id="gallery" className="section-padding bg-[#0a0a0a] relative overflow-hidden">
 
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-orange-500/5 blur-[100px]"/>
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-red-600/5 blur-[100px]"/>
 
       <div className="container-custom relative z-10">
 
         {/* SECTION HEADER */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-orange-500"/>
-            <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+            <div className="w-8 h-0.5 bg-red-600"/>
+            <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
               Gallery
             </span>
-            <div className="w-8 h-0.5 bg-orange-500"/>
+            <div className="w-8 h-0.5 bg-red-600"/>
           </div>
           <h2 className="font-bebas text-5xl lg:text-6xl tracking-wider text-white leading-none">
             INSIDE <span className="text-gradient">MUSCLE VAULT</span>
@@ -85,8 +85,8 @@ const Gallery = () => {
                 px-5 py-2 rounded text-xs tracking-widest uppercase
                 font-medium transition-all duration-300
                 ${activeCategory === cat
-                  ? 'bg-orange-500 text-white'
-                  : 'border border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+                  ? 'bg-red-600 text-white'
+                  : 'border border-white/10 text-gray-500 hover:border-red-600/50 hover:text-red-600'
                 }
               `}
             >
@@ -105,7 +105,7 @@ const Gallery = () => {
                 relative overflow-hidden rounded-lg
                 cursor-pointer group
                 border border-white/5
-                hover:border-orange-500/30
+                hover:border-red-600/30
                 transition-all duration-300
                 ${image.span}
               `}
@@ -139,7 +139,7 @@ const Gallery = () => {
                 <h4 className="font-bebas text-lg tracking-wider text-white">
                   {image.title}
                 </h4>
-                <span className="text-orange-500 text-xs tracking-widest uppercase">
+                <span className="text-red-600 text-xs tracking-widest uppercase">
                   {image.category}
                 </span>
               </div>
@@ -149,7 +149,7 @@ const Gallery = () => {
                 absolute top-1/2 left-1/2
                 -translate-x-1/2 -translate-y-1/2
                 w-10 h-10 rounded-full
-                bg-orange-500/80
+                bg-red-600/80
                 flex items-center justify-center
                 opacity-0 group-hover:opacity-100
                 scale-75 group-hover:scale-100
@@ -180,7 +180,7 @@ const Gallery = () => {
               inline-flex items-center gap-3
               px-8 py-3.5
               border border-white/10
-              hover:border-orange-500 hover:text-orange-500
+              hover:border-red-600 hover:text-red-600
               text-gray-400
               text-xs tracking-widest uppercase font-medium
               rounded transition-all duration-300
@@ -229,7 +229,7 @@ const Gallery = () => {
               className="
                 absolute top-4 right-4
                 w-10 h-10 rounded-full
-                bg-black/60 hover:bg-orange-500
+                bg-black/60 hover:bg-red-600
                 flex items-center justify-center
                 transition-all duration-300
               "

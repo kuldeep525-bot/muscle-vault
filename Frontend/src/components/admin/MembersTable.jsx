@@ -94,7 +94,7 @@
 // //               w-full bg-[#111] border border-white/10
 // //               rounded-lg pl-10 pr-4 py-2.5
 // //               text-white text-sm placeholder-gray-600
-// //               focus:outline-none focus:border-orange-500
+// //               focus:outline-none focus:border-red-600
 // //               transition-colors duration-300
 // //             "
 // //           />
@@ -108,7 +108,7 @@
 // //             bg-[#111] border border-white/10
 // //             rounded-lg px-4 py-2.5
 // //             text-gray-400 text-sm
-// //             focus:outline-none focus:border-orange-500
+// //             focus:outline-none focus:border-red-600
 // //             transition-colors duration-300
 // //           "
 // //         >
@@ -125,7 +125,7 @@
 // //           className="
 // //             px-4 py-2.5 border border-white/10
 // //             rounded-lg text-gray-500
-// //             hover:border-orange-500 hover:text-orange-500
+// //             hover:border-red-600 hover:text-red-600
 // //             transition-all duration-300
 // //           "
 // //         >
@@ -196,9 +196,9 @@
 // //                       <div className="flex items-center gap-3">
 // //                         <div className="
 // //                           w-9 h-9 rounded-full
-// //                           bg-orange-500/20 border border-orange-500/30
+// //                           bg-red-600/20 border border-red-600/30
 // //                           flex items-center justify-center
-// //                           text-orange-500 font-bebas text-lg
+// //                           text-red-600 font-bebas text-lg
 // //                           shrink-0
 // //                         ">
 // //                           {member.user?.name?.charAt(0).toUpperCase()}
@@ -258,8 +258,8 @@
 // //                           onClick={() => { setSelected(member); setShowModal(true) }}
 // //                           className="
 // //                             w-8 h-8 rounded-lg
-// //                             bg-white/5 hover:bg-orange-500/10
-// //                             text-gray-500 hover:text-orange-500
+// //                             bg-white/5 hover:bg-red-600/10
+// //                             text-gray-500 hover:text-red-600
 // //                             flex items-center justify-center
 // //                             transition-all duration-200
 // //                           "
@@ -329,9 +329,9 @@
 // //             <div className="flex items-center gap-4 mb-6 p-4 bg-[#0d0d0d] rounded-xl">
 // //               <div className="
 // //                 w-14 h-14 rounded-full
-// //                 bg-orange-500/20 border-2 border-orange-500/30
+// //                 bg-red-600/20 border-2 border-red-600/30
 // //                 flex items-center justify-center
-// //                 text-orange-500 font-bebas text-2xl
+// //                 text-red-600 font-bebas text-2xl
 // //               ">
 // //                 {selected.user?.name?.charAt(0).toUpperCase()}
 // //               </div>
@@ -373,8 +373,8 @@
 // //                       py-2 rounded-lg text-xs tracking-wider uppercase
 // //                       border transition-all duration-200 capitalize
 // //                       ${selected.membershipStatus === s
-// //                         ? 'bg-orange-500 border-orange-500 text-white'
-// //                         : 'border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+// //                         ? 'bg-red-600 border-red-600 text-white'
+// //                         : 'border-white/10 text-gray-500 hover:border-red-600/50 hover:text-red-600'
 // //                       }
 // //                     `}
 // //                   >
@@ -533,7 +533,7 @@
 //               w-full bg-[#111] border border-white/10
 //               rounded-lg pl-10 pr-4 py-2.5
 //               text-white text-sm placeholder-gray-600
-//               focus:outline-none focus:border-orange-500
+//               focus:outline-none focus:border-red-600
 //               transition-colors duration-300
 //             "
 //           />
@@ -545,7 +545,7 @@
 //           className="
 //             px-4 py-2.5 border border-white/10
 //             rounded-lg text-gray-500
-//             hover:border-orange-500 hover:text-orange-500
+//             hover:border-red-600 hover:text-red-600
 //             transition-all duration-300
 //           "
 //         >
@@ -616,9 +616,9 @@
 //                       <div className="flex items-center gap-3">
 //                         <div className="
 //                           w-9 h-9 rounded-full
-//                           bg-orange-500/20 border border-orange-500/30
+//                           bg-red-600/20 border border-red-600/30
 //                           flex items-center justify-center
-//                           text-orange-500 font-bebas text-lg shrink-0
+//                           text-red-600 font-bebas text-lg shrink-0
 //                         ">
 //                           {member.userId?.name?.charAt(0).toUpperCase()}
 //                         </div>
@@ -676,8 +676,8 @@
 //                           onClick={() => { setSelected(member); setShowModal(true) }}
 //                           className="
 //                             w-8 h-8 rounded-lg
-//                             bg-white/5 hover:bg-orange-500/10
-//                             text-gray-500 hover:text-orange-500
+//                             bg-white/5 hover:bg-red-600/10
+//                             text-gray-500 hover:text-red-600
 //                             flex items-center justify-center
 //                             transition-all duration-200
 //                           "
@@ -747,9 +747,9 @@
 //             <div className="flex items-center gap-4 mb-6 p-4 bg-[#0d0d0d] rounded-xl">
 //               <div className="
 //                 w-14 h-14 rounded-full
-//                 bg-orange-500/20 border-2 border-orange-500/30
+//                 bg-red-600/20 border-2 border-red-600/30
 //                 flex items-center justify-center
-//                 text-orange-500 font-bebas text-2xl
+//                 text-red-600 font-bebas text-2xl
 //               ">
 //                 {selected.userId?.name?.charAt(0).toUpperCase()}
 //               </div>
@@ -799,8 +799,8 @@
 //                       py-2 rounded-lg text-xs tracking-wider uppercase
 //                       border transition-all duration-200 capitalize
 //                       ${selected.membershipStatus === s
-//                         ? 'bg-orange-500 border-orange-500 text-white'
-//                         : 'border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+//                         ? 'bg-red-600 border-red-600 text-white'
+//                         : 'border-white/10 text-gray-500 hover:border-red-600/50 hover:text-red-600'
 //                       }
 //                     `}
 //                   >
@@ -969,7 +969,7 @@ const MembersTable = () => {
               w-full bg-[#111] border border-white/10
               rounded-lg pl-10 pr-4 py-2.5
               text-white text-sm placeholder-gray-600
-              focus:outline-none focus:border-orange-500
+              focus:outline-none focus:border-red-600
               transition-colors duration-300
             "
           />
@@ -981,7 +981,7 @@ const MembersTable = () => {
           className="
             px-4 py-2.5 border border-white/10
             rounded-lg text-gray-500
-            hover:border-orange-500 hover:text-orange-500
+            hover:border-red-600 hover:text-red-600
             transition-all duration-300
           "
         >
@@ -1052,9 +1052,9 @@ const MembersTable = () => {
                       <div className="flex items-center gap-3">
                         <div className="
                           w-9 h-9 rounded-full
-                          bg-orange-500/20 border border-orange-500/30
+                          bg-red-600/20 border border-red-600/30
                           flex items-center justify-center
-                          text-orange-500 font-bebas text-lg shrink-0
+                          text-red-600 font-bebas text-lg shrink-0
                         ">
                           {member.userId?.name?.charAt(0).toUpperCase()}
                         </div>
@@ -1116,8 +1116,8 @@ const MembersTable = () => {
                           }}
                           className="
                             w-8 h-8 rounded-lg
-                            bg-white/5 hover:bg-orange-500/10
-                            text-gray-500 hover:text-orange-500
+                            bg-white/5 hover:bg-red-600/10
+                            text-gray-500 hover:text-red-600
                             flex items-center justify-center
                             transition-all duration-200
                           "
@@ -1188,9 +1188,9 @@ const MembersTable = () => {
             <div className="flex items-center gap-4 mb-6 p-4 bg-[#0d0d0d] rounded-xl">
               <div className="
                 w-14 h-14 rounded-full
-                bg-orange-500/20 border-2 border-orange-500/30
+                bg-red-600/20 border-2 border-red-600/30
                 flex items-center justify-center
-                text-orange-500 font-bebas text-2xl
+                text-red-600 font-bebas text-2xl
               ">
                 {selected.userId?.name?.charAt(0).toUpperCase()}
               </div>
@@ -1239,7 +1239,7 @@ const MembersTable = () => {
                     flex-1 bg-[#0d0d0d] border border-white/10
                     rounded-lg px-3 py-2.5
                     text-gray-400 text-sm
-                    focus:outline-none focus:border-orange-500
+                    focus:outline-none focus:border-red-600
                     transition-colors duration-300
                   "
                 >
@@ -1255,7 +1255,8 @@ const MembersTable = () => {
                   disabled={assigning}
                   className="
                     px-4 py-2.5 text-xs tracking-wider uppercase
-                    bg-orange-500 hover:bg-orange-600
+                    bg-red-600 hover:bg-Replace: red-700
+
                     text-white rounded-lg
                     transition-all duration-200
                     disabled:opacity-50
@@ -1280,8 +1281,8 @@ const MembersTable = () => {
                       py-2 rounded-lg text-xs tracking-wider uppercase
                       border transition-all duration-200 capitalize
                       ${selected.membershipStatus === s
-                        ? 'bg-orange-500 border-orange-500 text-white'
-                        : 'border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+                        ? 'bg-red-600 border-red-600 text-white'
+                        : 'border-white/10 text-gray-500 hover:border-red-600/50 hover:text-red-600'
                       }
                     `}
                   >

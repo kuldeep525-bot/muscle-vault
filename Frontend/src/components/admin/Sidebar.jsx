@@ -160,7 +160,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         {/* LOGO */}
         <div className="p-6 border-b border-white/5">
           <Link to="/" className="font-bebas text-xl tracking-widest text-white">
-            MUSCLE <span className="text-orange-500">VAULT</span>
+            MUSCLE <span className="text-red-600">VAULT</span>
           </Link>
           <div className="text-xs text-gray-600 tracking-wider mt-1">
             Admin Dashboard
@@ -183,16 +183,16 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                   transition-all duration-200
                   group relative
                   ${isActive
-                    ? 'bg-orange-500/10 text-orange-500 border border-orange-500/20'
+                    ? 'bg-red-600/10 text-red-600 border border-red-600/20'
                     : 'text-gray-500 hover:text-white hover:bg-white/5 border border-transparent'
                   }
                 `}
               >
                 {/* Active left border */}
                 {isActive && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-orange-500 rounded-full"/>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-6 bg-red-600 rounded-full"/>
                 )}
-                <span className={isActive ? 'text-orange-500' : 'text-gray-600 group-hover:text-white transition-colors'}>
+                <span className={isActive ? 'text-red-600' : 'text-gray-600 group-hover:text-white transition-colors'}>
                   {item.icon}
                 </span>
                 {item.label}
@@ -208,9 +208,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <div className="flex items-center gap-3 px-4 py-3 mb-2">
             <div className="
               w-9 h-9 rounded-full
-              bg-orange-500/20 border border-orange-500/30
+              bg-red-600/20 border border-red-600/30
               flex items-center justify-center
-              text-orange-500 font-bebas text-lg
+              text-red-600 font-bebas text-lg
               shrink-0
             ">
               {user?.name?.charAt(0).toUpperCase()}

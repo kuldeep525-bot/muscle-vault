@@ -3,7 +3,7 @@ import API from '../../utils/api'
 import toast from 'react-hot-toast'
 
 const statusColors = {
-  new:     'bg-orange-500/10 text-orange-400 border-orange-500/20',
+  new:     'bg-red-600/10 text-red-500 border-red-600/20',
   read:    'bg-blue-500/10 text-blue-400 border-blue-500/20',
   replied: 'bg-green-500/10 text-green-400 border-green-500/20',
   closed:  'bg-gray-500/10 text-gray-400 border-gray-500/20',
@@ -127,11 +127,11 @@ const fetchInquiries = async () => {
         {inquiries.filter(i => i.status === 'new').length > 0 && (
           <div className="
             flex items-center gap-2 px-4 py-2
-            bg-orange-500/10 border border-orange-500/20
+            bg-red-600/10 border border-red-600/20
             rounded-lg
           ">
-            <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"/>
-            <span className="text-orange-400 text-xs tracking-wider">
+            <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse"/>
+            <span className="text-red-500 text-xs tracking-wider">
               {inquiries.filter(i => i.status === 'new').length} new unread
             </span>
           </div>
@@ -148,8 +148,8 @@ const fetchInquiries = async () => {
               px-4 py-2 rounded-lg text-xs tracking-widest uppercase
               transition-all duration-200
               ${statusFilter === s
-                ? 'bg-orange-500 text-white'
-                : 'border border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+                ? 'bg-red-600 text-white'
+                : 'border border-white/10 text-gray-500 hover:border-red-600/50 hover:text-red-600'
               }
             `}
           >
@@ -191,10 +191,10 @@ const fetchInquiries = async () => {
               className={`
                 bg-[#111] border rounded-xl p-5
                 cursor-pointer
-                hover:border-orange-500/20
+                hover:border-red-600/20
                 transition-all duration-200
                 ${inquiry.status === 'new'
-                  ? 'border-orange-500/20'
+                  ? 'border-red-600/20'
                   : 'border-white/5'
                 }
               `}
@@ -207,9 +207,9 @@ const fetchInquiries = async () => {
                   {/* Avatar */}
                   <div className="
                     w-10 h-10 rounded-full shrink-0
-                    bg-orange-500/20 border border-orange-500/30
+                    bg-red-600/20 border border-red-600/30
                     flex items-center justify-center
-                    font-bebas text-lg text-orange-500
+                    font-bebas text-lg text-red-600
                   ">
                     {inquiry.name?.charAt(0).toUpperCase()}
                   </div>
@@ -222,7 +222,7 @@ const fetchInquiries = async () => {
                         {inquiry.name}
                       </span>
                       {inquiry.status === 'new' && (
-                        <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0"/>
+                        <span className="w-2 h-2 rounded-full bg-red-600 shrink-0"/>
                       )}
                     </div>
                     <div className="text-gray-500 text-xs">{inquiry.email}</div>
@@ -295,9 +295,9 @@ const fetchInquiries = async () => {
             <div className="flex items-center gap-4 p-4 bg-[#0d0d0d] rounded-xl mb-5">
               <div className="
                 w-14 h-14 rounded-full shrink-0
-                bg-orange-500/20 border-2 border-orange-500/30
+                bg-red-600/20 border-2 border-red-600/30
                 flex items-center justify-center
-                font-bebas text-2xl text-orange-500
+                font-bebas text-2xl text-red-600
               ">
                 {selected.name?.charAt(0).toUpperCase()}
               </div>
@@ -343,11 +343,11 @@ const fetchInquiries = async () => {
                     key={s}
                     onClick={() => handleStatusUpdate(selected._id, s)}
                     className={`
-                      py-2.5 rounded-lg text-xs tracking-wider uppercase
+                      py-2.5 rounded-lg text-xs tracking-wider-uppercase
                       border transition-all duration-200 capitalize
                       ${selected.status === s
-                        ? 'bg-orange-500 border-orange-500 text-white'
-                        : 'border-white/10 text-gray-500 hover:border-orange-500/50 hover:text-orange-500'
+                        ? 'bg-red-600 border-red-600 text-white'
+                        : 'border-white/10 text-gray-500 hover:border-red-600/50 hover:text-red-600'
                       }
                     `}
                   >

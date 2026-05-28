@@ -89,7 +89,7 @@
 //       label: 'Total Members',
 //       value: stats.totalMembers,
 //       icon: (
-//         <svg width="20" height="20" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+//         <svg width="20" height="20" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
 //           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
 //           <circle cx="9" cy="7" r="4"/>
 //           <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -145,7 +145,7 @@
 //   ]
 
 //   const colorMap = {
-//     orange: 'bg-orange-500/10 border-orange-500/20',
+//     orange: 'bg-red-600/10 border-red-600/20',
 //     green:  'bg-green-500/10 border-green-500/20',
 //     blue:   'bg-blue-500/10 border-blue-500/20',
 //     purple: 'bg-purple-500/10 border-purple-500/20',
@@ -193,7 +193,7 @@
 //                 text-xs px-2 py-1 rounded-full font-medium
 //                 ${card.changeType === 'up'      ? 'bg-green-500/10 text-green-400' : ''}
 //                 ${card.changeType === 'live'    ? 'bg-blue-500/10 text-blue-400 animate-pulse' : ''}
-//                 ${card.changeType === 'warning' ? 'bg-orange-500/10 text-orange-400' : ''}
+//                 ${card.changeType === 'warning' ? 'bg-red-600/10 text-red-500' : ''}
 //               `}>
 //                 {card.change}
 //               </span>
@@ -228,7 +228,7 @@
 //               <p className="text-gray-600 text-xs mt-0.5">Last 12 months</p>
 //             </div>
 //             <div className="flex items-center gap-2">
-//               <div className="w-3 h-3 rounded-full bg-orange-500"/>
+//               <div className="w-3 h-3 rounded-full bg-red-600"/>
 //               <span className="text-gray-500 text-xs">Members</span>
 //             </div>
 //           </div>
@@ -236,8 +236,8 @@
 //             <AreaChart data={monthlyData}>
 //               <defs>
 //                 <linearGradient id="membersGrad" x1="0" y1="0" x2="0" y2="1">
-//                   <stop offset="5%" stopColor="#ff6b00" stopOpacity={0.2}/>
-//                   <stop offset="95%" stopColor="#ff6b00" stopOpacity={0}/>
+//                   <stop offset="5%" stopColor="#dc2626" stopOpacity={0.2}/>
+//                   <stop offset="95%" stopColor="#dc2626" stopOpacity={0}/>
 //                 </linearGradient>
 //               </defs>
 //               <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1a"/>
@@ -247,7 +247,7 @@
 //               <Area
 //                 type="monotone"
 //                 dataKey="members"
-//                 stroke="#ff6b00"
+//                 stroke="#dc2626"
 //                 strokeWidth={2}
 //                 fill="url(#membersGrad)"
 //               />
@@ -269,7 +269,7 @@
 //               <XAxis dataKey="day" tick={{ fill: '#555', fontSize: 11 }} axisLine={false} tickLine={false}/>
 //               <YAxis tick={{ fill: '#555', fontSize: 11 }} axisLine={false} tickLine={false}/>
 //               <Tooltip content={<CustomTooltip />}/>
-//               <Bar dataKey="count" fill="#ff6b00" radius={[4, 4, 0, 0]} opacity={0.8}/>
+//               <Bar dataKey="count" fill="#dc2626" radius={[4, 4, 0, 0]} opacity={0.8}/>
 //             </BarChart>
 //           </ResponsiveContainer>
 //         </div>
@@ -377,7 +377,7 @@ const DashboardStats = () => {
       label: 'Total Members',
       value: stats.totalMembers,
       icon: (
-        <svg width="20" height="20" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
           <circle cx="9" cy="7" r="4"/>
           <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -423,7 +423,7 @@ const DashboardStats = () => {
   ]
 
   const colorMap = {
-    orange: 'bg-orange-500/10 border-orange-500/20',
+    orange: 'bg-red-600/10 border-red-600/20',
     green:  'bg-green-500/10 border-green-500/20',
     blue:   'bg-blue-500/10 border-blue-500/20',
     purple: 'bg-purple-500/10 border-purple-500/20',
@@ -490,7 +490,7 @@ const DashboardStats = () => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-orange-500"/>
+            <div className="w-3 h-3 rounded-full bg-red-600"/>
             <span className="text-gray-500 text-xs">Members</span>
           </div>
         </div>
@@ -498,8 +498,8 @@ const DashboardStats = () => {
           <AreaChart data={monthlyData}>
             <defs>
               <linearGradient id="membersGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ff6b00" stopOpacity={0.2}/>
-                <stop offset="95%" stopColor="#ff6b00" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#dc2626" stopOpacity={0.2}/>
+                <stop offset="95%" stopColor="#dc2626" stopOpacity={0}/>
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="#1a1a1a"/>
@@ -509,7 +509,7 @@ const DashboardStats = () => {
             <Area
               type="monotone"
               dataKey="members"
-              stroke="#ff6b00"
+              stroke="#dc2626"
               strokeWidth={2}
               fill="url(#membersGrad)"
             />

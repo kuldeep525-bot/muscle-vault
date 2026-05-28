@@ -19,8 +19,9 @@ const Button = ({
   // VARIANTS — Alag alag button styles
   // =============================================
   const variants = {
-    primary: 'bg-orange-500 hover:bg-orange-600 text-white border border-orange-500',
-    outline: 'bg-transparent hover:bg-orange-500 text-orange-500 hover:text-white border border-orange-500',
+    primary: 'bg-red-600 hover:bg-Replace: red-700
+ text-white border border-red-600',
+    outline: 'bg-transparent hover:bg-red-600 text-red-600 hover:text-white border border-red-600',
     danger:  'bg-red-600 hover:bg-red-700 text-white border border-red-600',
     ghost:   'bg-transparent hover:bg-white/10 text-white border border-white/20',
   }

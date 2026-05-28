@@ -24,8 +24,8 @@
 //         <div className="absolute inset-0 opacity-[0.03]"
 //           style={{
 //             backgroundImage: `
-//               linear-gradient(#ff6b00 1px, transparent 1px),
-//               linear-gradient(90deg, #ff6b00 1px, transparent 1px)
+//               linear-gradient(#dc2626 1px, transparent 1px),
+//               linear-gradient(90deg, #dc2626 1px, transparent 1px)
 //             `,
 //             backgroundSize: '60px 60px'
 //           }}
@@ -35,14 +35,14 @@
 //         <div className="
 //           absolute top-1/2 right-0 -translate-y-1/2
 //           w-[600px] h-[600px] rounded-full
-//           bg-orange-500/10 blur-[120px]
+//           bg-red-600/10 blur-[120px]
 //         "/>
 
 //         {/* Orange glow — left bottom */}
 //         <div className="
 //           absolute bottom-0 left-1/4
 //           w-[300px] h-[300px] rounded-full
-//           bg-orange-500/5 blur-[80px]
+//           bg-red-600/5 blur-[80px]
 //         "/>
 
 //       </div>
@@ -61,10 +61,10 @@
 
 //             {/* Tag line */}
 //             <div className="flex items-center gap-3 mb-6">
-//               <div className="w-8 h-0.5 bg-orange-500"/>
+//               <div className="w-8 h-0.5 bg-red-600"/>
 //               <span className="
 //                 text-xs tracking-[4px] uppercase
-//                 text-orange-500 font-medium
+//                 text-red-600 font-medium
 //               ">
 //                 Punjab's #1 Fitness Club
 //               </span>
@@ -106,10 +106,11 @@
               
 //                 href="/#plans"
 //                 className="
-//                   px-8 py-4 bg-orange-500 hover:bg-orange-600
+//                   px-8 py-4 bg-red-600 hover:bg-Replace: red-700
+
 //                   text-white text-xs tracking-widest uppercase font-medium
 //                   rounded transition-all duration-300
-//                   hover:shadow-lg hover:shadow-orange-500/25
+//                   hover:shadow-lg hover:shadow-red-600/25
 //                 "
 //               >
 //                 Join Now
@@ -118,8 +119,8 @@
 //                 href="/#about"
 //                 className="
 //                   px-8 py-4 border border-white/20
-//                   hover:border-orange-500
-//                   text-gray-400 hover:text-orange-500
+//                   hover:border-red-600
+//                   text-gray-400 hover:text-red-600
 //                   text-xs tracking-widest uppercase font-medium
 //                   rounded transition-all duration-300
 //                   flex items-center gap-2
@@ -144,7 +145,7 @@
 //               ].map((stat) => (
 //                 <div key={stat.label}>
 //                   <div className="
-//                     font-bebas text-4xl text-orange-500
+//                     font-bebas text-4xl text-red-600
 //                     tracking-wider
 //                   ">
 //                     {stat.number}
@@ -194,16 +195,16 @@
 //             ">
 //               <div className="flex items-center gap-3">
 //                 <div className="
-//                   w-10 h-10 rounded-full bg-orange-500/20
+//                   w-10 h-10 rounded-full bg-red-600/20
 //                   flex items-center justify-center
 //                 ">
-//                   <svg width="18" height="18" fill="none" stroke="#ff6b00" strokeWidth="2" viewBox="0 0 24 24">
+//                   <svg width="18" height="18" fill="none" stroke="#dc2626" strokeWidth="2" viewBox="0 0 24 24">
 //                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
 //                   </svg>
 //                 </div>
 //                 <div>
 //                   <div className="text-white text-sm font-medium">Active Today</div>
-//                   <div className="text-orange-500 text-xs">47 Members</div>
+//                   <div className="text-red-600 text-xs">47 Members</div>
 //                 </div>
 //               </div>
 //             </div>
@@ -218,10 +219,10 @@
 //                 Avg Rating
 //               </div>
 //               <div className="flex items-center gap-2">
-//                 <span className="font-bebas text-2xl text-orange-500">4.9</span>
+//                 <span className="font-bebas text-2xl text-red-600">4.9</span>
 //                 <div className="flex gap-0.5">
 //                   {[...Array(5)].map((_, i) => (
-//                     <svg key={i} width="12" height="12" fill="#ff6b00" viewBox="0 0 24 24">
+//                     <svg key={i} width="12" height="12" fill="#dc2626" viewBox="0 0 24 24">
 //                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
 //                     </svg>
 //                   ))}
@@ -233,7 +234,7 @@
 //             <div className="
 //               absolute -bottom-3 -right-3
 //               w-2/3 h-2/3 rounded-lg
-//               border border-orange-500/20 -z-10
+//               border border-red-600/20 -z-10
 //             "/>
 
 //           </div>
@@ -282,14 +283,14 @@ const Hero = () => {
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
-              linear-gradient(#ff6b00 1px, transparent 1px),
-              linear-gradient(90deg, #ff6b00 1px, transparent 1px)
+              linear-gradient(#dc2626 1px, transparent 1px),
+              linear-gradient(90deg, #dc2626 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px'
           }}
         />
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-orange-500/10 blur-[120px]"/>
-        <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-orange-500/5 blur-[80px]"/>
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-red-600/10 blur-[120px]"/>
+        <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-red-600/5 blur-[80px]"/>
       </div>
 
       {/* MAIN CONTENT */}
@@ -304,8 +305,8 @@ const Hero = () => {
 
             {/* Tag line */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-0.5 bg-orange-500"/>
-              <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+              <div className="w-8 h-0.5 bg-red-600"/>
+              <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
                 Punjab's #1 Fitness Club
               </span>
             </div>
@@ -334,10 +335,11 @@ const Hero = () => {
               <a
                 href="/#plans"
                 className="
-                  px-8 py-4 bg-orange-500 hover:bg-orange-600
+                  px-8 py-4 bg-red-600 hover:bg-Replace: red-700
+
                   text-white text-xs tracking-widest uppercase font-medium
                   rounded transition-all duration-300
-                  hover:shadow-lg hover:shadow-orange-500/25
+                  hover:shadow-lg hover:shadow-red-600/25
                 "
               >
                 Join Now
@@ -346,8 +348,8 @@ const Hero = () => {
                 href="/#about"
                 className="
                   px-8 py-4 border border-white/20
-                  hover:border-orange-500
-                  text-gray-400 hover:text-orange-500
+                  hover:border-red-600
+                  text-gray-400 hover:text-red-600
                   text-xs tracking-widest uppercase font-medium
                   rounded transition-all duration-300
                   flex items-center gap-2
@@ -368,7 +370,7 @@ const Hero = () => {
                 { number: '8',    label: 'Years' },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-bebas text-4xl text-orange-500 tracking-wider">
+                  <div className="font-bebas text-4xl text-red-600 tracking-wider">
                     {stat.number}
                   </div>
                   <div className="text-xs tracking-widest uppercase text-gray-500 mt-1">
@@ -399,14 +401,14 @@ const Hero = () => {
             {/* Floating card — top left */}
             <div className="absolute -left-6 top-12 bg-[#111] border border-white/10 rounded-lg p-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
-                  <svg width="18" height="18" fill="none" stroke="#ff6b00" strokeWidth="2" viewBox="0 0 24 24">
+                <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
+                  <svg width="18" height="18" fill="none" stroke="#dc2626" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                   </svg>
                 </div>
                 <div>
                   <div className="text-white text-sm font-medium">Active Today</div>
-                  <div className="text-orange-500 text-xs">47 Members</div>
+                  <div className="text-red-600 text-xs">47 Members</div>
                 </div>
               </div>
             </div>
@@ -415,10 +417,10 @@ const Hero = () => {
             <div className="absolute -right-6 bottom-16 bg-[#111] border border-white/10 rounded-lg p-4">
               <div className="text-xs text-gray-500 tracking-wider uppercase mb-1">Avg Rating</div>
               <div className="flex items-center gap-2">
-                <span className="font-bebas text-2xl text-orange-500">4.9</span>
+                <span className="font-bebas text-2xl text-red-600">4.9</span>
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="12" height="12" fill="#ff6b00" viewBox="0 0 24 24">
+                    <svg key={i} width="12" height="12" fill="#dc2626" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                   ))}
@@ -426,7 +428,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="absolute -bottom-3 -right-3 w-2/3 h-2/3 rounded-lg border border-orange-500/20 -z-10"/>
+            <div className="absolute -bottom-3 -right-3 w-2/3 h-2/3 rounded-lg border border-red-600/20 -z-10"/>
 
           </div>
 

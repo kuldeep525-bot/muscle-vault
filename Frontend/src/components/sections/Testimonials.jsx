@@ -79,18 +79,18 @@ const Testimonials = () => {
     <section id="testimonials" className="section-padding bg-[#0d0d0d] relative overflow-hidden">
 
       {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-orange-500/5 blur-[120px]"/>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-red-600/5 blur-[120px]"/>
 
       <div className="container-custom relative z-10">
 
         {/* SECTION HEADER */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-orange-500"/>
-            <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+            <div className="w-8 h-0.5 bg-red-600"/>
+            <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
               Testimonials
             </span>
-            <div className="w-8 h-0.5 bg-orange-500"/>
+            <div className="w-8 h-0.5 bg-red-600"/>
           </div>
           <h2 className="font-bebas text-5xl lg:text-6xl tracking-wider text-white leading-none">
             WHAT MEMBERS <span className="text-gradient">SAY</span>
@@ -112,7 +112,7 @@ const Testimonials = () => {
           <div className="
             absolute top-6 right-8
             font-bebas text-[120px] leading-none
-            text-orange-500/5 select-none
+            text-red-600/5 select-none
           ">
             "
           </div>
@@ -124,7 +124,7 @@ const Testimonials = () => {
 
               {/* Avatar */}
               <div className="relative">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-500">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-600">
                   <img
                     src={testimonials[active].image}
                     alt={testimonials[active].name}
@@ -140,7 +140,7 @@ const Testimonials = () => {
                 <h4 className="font-bebas text-xl tracking-wider text-white">
                   {testimonials[active].name}
                 </h4>
-                <div className="text-orange-500 text-xs tracking-wider mt-0.5">
+                <div className="text-red-600 text-xs tracking-wider mt-0.5">
                   {testimonials[active].plan}
                 </div>
                 <div className="text-gray-600 text-xs mt-0.5">
@@ -151,7 +151,7 @@ const Testimonials = () => {
               {/* Stars */}
               <div className="flex gap-1">
                 {[...Array(testimonials[active].rating)].map((_, i) => (
-                  <svg key={i} width="14" height="14" fill="#ff6b00" viewBox="0 0 24 24">
+                  <svg key={i} width="14" height="14" fill="#dc2626" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
                 ))}
@@ -159,10 +159,10 @@ const Testimonials = () => {
 
               {/* Result badge */}
               <div className="
-                bg-orange-500/10 border border-orange-500/20
+                bg-red-600/10 border border-red-600/20
                 rounded-lg px-4 py-2 text-center
               ">
-                <div className="text-orange-500 font-bebas text-lg tracking-wider">
+                <div className="text-red-600 font-bebas text-lg tracking-wider">
                   {testimonials[active].result}
                 </div>
                 <div className="text-gray-500 text-xs">Result</div>
@@ -186,7 +186,7 @@ const Testimonials = () => {
                   className="
                     w-10 h-10 rounded-full
                     border border-white/10
-                    hover:border-orange-500 hover:text-orange-500
+                    hover:border-red-600 hover:text-red-600
                     text-gray-500
                     flex items-center justify-center
                     transition-all duration-300
@@ -206,7 +206,7 @@ const Testimonials = () => {
                       className={`
                         rounded-full transition-all duration-300
                         ${active === i
-                          ? 'w-6 h-2 bg-orange-500'
+                          ? 'w-6 h-2 bg-red-600'
                           : 'w-2 h-2 bg-white/20 hover:bg-white/40'
                         }
                       `}
@@ -219,7 +219,7 @@ const Testimonials = () => {
                   className="
                     w-10 h-10 rounded-full
                     border border-white/10
-                    hover:border-orange-500 hover:text-orange-500
+                    hover:border-red-600 hover:text-red-600
                     text-gray-500
                     flex items-center justify-center
                     transition-all duration-300
@@ -247,18 +247,18 @@ const Testimonials = () => {
                 bg-[#111] border rounded-xl p-5
                 transition-all duration-300
                 ${active === i
-                  ? 'border-orange-500/50 bg-orange-500/5'
+                  ? 'border-red-600/50 bg-red-600/5'
                   : 'border-white/5 hover:border-white/10'
                 }
               `}
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-orange-500/30">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-red-600/30">
                   <img src={t.image} alt={t.name} className="w-full h-full object-cover"/>
                 </div>
                 <div>
                   <div className="text-white text-xs font-medium tracking-wider">{t.name}</div>
-                  <div className="text-orange-500 text-xs">{t.result}</div>
+                  <div className="text-red-600 text-xs">{t.result}</div>
                 </div>
               </div>
               <p className="text-gray-600 text-xs leading-relaxed line-clamp-2">

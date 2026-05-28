@@ -123,7 +123,8 @@
 //           className="
 //             flex items-center gap-2
 //             px-5 py-2.5
-//             bg-orange-500 hover:bg-orange-600
+//             bg-red-600 hover:bg-Replace: red-700
+
 //             text-white text-xs tracking-widest uppercase font-medium
 //             rounded-lg transition-all duration-300
 //           "
@@ -162,8 +163,8 @@
 //             onClick={handleAdd}
 //             className="
 //               mt-4 px-6 py-2.5
-//               border border-orange-500 text-orange-500
-//               hover:bg-orange-500 hover:text-white
+//               border border-red-600 text-red-600
+//               hover:bg-red-600 hover:text-white
 //               text-xs tracking-widest uppercase rounded-lg
 //               transition-all duration-300
 //             "
@@ -181,7 +182,7 @@
 //                 transition-all duration-300
 //                 hover:-translate-y-0.5
 //                 ${plan.isPopular
-//                   ? 'border-orange-500/40'
+//                   ? 'border-red-600/40'
 //                   : 'border-white/5 hover:border-white/10'
 //                 }
 //                 ${!plan.isActive ? 'opacity-50' : ''}
@@ -190,7 +191,7 @@
 //               {/* Top badges */}
 //               <div className="flex items-center gap-2 mb-4">
 //                 {plan.isPopular && (
-//                   <span className="text-xs px-2.5 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20">
+//                   <span className="text-xs px-2.5 py-1 rounded-full bg-red-600/10 text-red-500border border-red-600/20">
 //                     ⭐ Popular
 //                   </span>
 //                 )}
@@ -216,7 +217,7 @@
 //               {/* Price */}
 //               <div className="flex items-end gap-1 mb-4">
 //                 <span className="text-gray-500">₹</span>
-//                 <span className="font-bebas text-4xl text-orange-500 leading-none tracking-wider">
+//                 <span className="font-bebas text-4xl text-red-600 leading-none tracking-wider">
 //                   {plan.price?.toLocaleString()}
 //                 </span>
 //               </div>
@@ -225,8 +226,8 @@
 //               <ul className="flex flex-col gap-2 mb-6">
 //                 {plan.features?.slice(0, 4).map((f, i) => (
 //                   <li key={i} className="flex items-center gap-2 text-gray-500 text-xs">
-//                     <div className="w-4 h-4 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0">
-//                       <svg width="8" height="8" fill="none" stroke="#ff6b00" strokeWidth="2.5" viewBox="0 0 24 24">
+//                     <div className="w-4 h-4 rounded-full bg-red-600/10 flex items-center justify-center shrink-0">
+//                       <svg width="8" height="8" fill="none" stroke="#dc2626" strokeWidth="2.5" viewBox="0 0 24 24">
 //                         <polyline points="20 6 9 17 4 12"/>
 //                       </svg>
 //                     </div>
@@ -247,7 +248,7 @@
 //                   className="
 //                     flex-1 py-2 text-xs tracking-wider uppercase
 //                     border border-white/10 text-gray-400
-//                     hover:border-orange-500 hover:text-orange-500
+//                     hover:border-red-600 hover:text-red-600
 //                     rounded-lg transition-all duration-200
 //                     flex items-center justify-center gap-2
 //                   "
@@ -326,7 +327,7 @@
 //                     w-full bg-[#0d0d0d] border border-white/10
 //                     rounded-lg px-4 py-3 text-white text-sm
 //                     placeholder-gray-600
-//                     focus:outline-none focus:border-orange-500
+//                     focus:outline-none focus:border-red-600
 //                     transition-colors duration-300
 //                   "
 //                 />
@@ -348,7 +349,7 @@
 //                       w-full bg-[#0d0d0d] border border-white/10
 //                       rounded-lg px-4 py-3 text-white text-sm
 //                       placeholder-gray-600
-//                       focus:outline-none focus:border-orange-500
+//                       focus:outline-none focus:border-red-600
 //                       transition-colors duration-300
 //                     "
 //                   />
@@ -367,7 +368,7 @@
 //                       w-full bg-[#0d0d0d] border border-white/10
 //                       rounded-lg px-4 py-3 text-white text-sm
 //                       placeholder-gray-600
-//                       focus:outline-none focus:border-orange-500
+//                       focus:outline-none focus:border-red-600
 //                       transition-colors duration-300
 //                     "
 //                   />
@@ -388,7 +389,7 @@
 //                     w-full bg-[#0d0d0d] border border-white/10
 //                     rounded-lg px-4 py-3 text-white text-sm
 //                     placeholder-gray-600
-//                     focus:outline-none focus:border-orange-500
+//                     focus:outline-none focus:border-red-600
 //                     transition-colors duration-300
 //                   "
 //                 />
@@ -408,7 +409,7 @@
 //                     w-full bg-[#0d0d0d] border border-white/10
 //                     rounded-lg px-4 py-3 text-white text-sm
 //                     placeholder-gray-600
-//                     focus:outline-none focus:border-orange-500
+//                     focus:outline-none focus:border-red-600
 //                     transition-colors duration-300
 //                     resize-none
 //                   "
@@ -424,7 +425,7 @@
 //                     className={`
 //                       w-11 h-6 rounded-full relative
 //                       transition-colors duration-300 cursor-pointer
-//                       ${form.isPopular ? 'bg-orange-500' : 'bg-white/10'}
+//                       ${form.isPopular ? 'bg-red-600' : 'bg-white/10'}
 //                     `}
 //                   >
 //                     <div className={`
@@ -462,7 +463,8 @@
 //                 disabled={saving}
 //                 className="
 //                   w-full py-3.5 mt-2
-//                   bg-orange-500 hover:bg-orange-600
+//                   bg-red-600 hover:bg-Replace: red-700
+
 //                   disabled:opacity-50 disabled:cursor-not-allowed
 //                   text-white text-xs tracking-widest uppercase font-medium
 //                   rounded-lg transition-all duration-300
@@ -618,7 +620,8 @@ const PlansManager = () => {
           className="
             flex items-center gap-2
             px-5 py-2.5
-            bg-orange-500 hover:bg-orange-600
+            bg-red-600 hover:bg-Replace: red-700
+
             text-white text-xs tracking-widest uppercase font-medium
             rounded-lg transition-all duration-300
           "
@@ -676,8 +679,8 @@ const PlansManager = () => {
             onClick={handleAdd}
             className="
               mt-4 px-6 py-2.5
-              border border-orange-500 text-orange-500
-              hover:bg-orange-500 hover:text-white
+              border border-red-600 text-red-600
+              hover:bg-red-600 hover:text-white
               text-xs tracking-widest uppercase rounded-lg
               transition-all duration-300
             "
@@ -728,7 +731,7 @@ const PlansManager = () => {
               <div className="flex items-end gap-1 mb-6">
                 <span className="text-gray-500">₹</span>
 
-                <span className="font-bebas text-4xl text-orange-500 leading-none tracking-wider">
+                <span className="font-bebas text-4xl text-red-600 leading-none tracking-wider">
                   {plan.price?.toLocaleString()}
                 </span>
               </div>
@@ -740,7 +743,7 @@ const PlansManager = () => {
                   className="
                     flex-1 py-2 text-xs tracking-wider uppercase
                     border border-white/10 text-gray-400
-                    hover:border-orange-500 hover:text-orange-500
+                    hover:border-red-600 hover:text-red-600
                     rounded-lg transition-all duration-200
                     flex items-center justify-center gap-2
                   "
@@ -847,7 +850,7 @@ const PlansManager = () => {
                     w-full bg-[#0d0d0d] border border-white/10
                     rounded-lg px-4 py-3 text-white text-sm
                     placeholder-gray-600
-                    focus:outline-none focus:border-orange-500
+                    focus:outline-none focus:border-red-600
                     transition-colors duration-300
                   "
                 />
@@ -872,7 +875,7 @@ const PlansManager = () => {
                       w-full bg-[#0d0d0d] border border-white/10
                       rounded-lg px-4 py-3 text-white text-sm
                       placeholder-gray-600
-                      focus:outline-none focus:border-orange-500
+                      focus:outline-none focus:border-red-600
                       transition-colors duration-300
                     "
                   />
@@ -895,7 +898,7 @@ const PlansManager = () => {
                       w-full bg-[#0d0d0d] border border-white/10
                       rounded-lg px-4 py-3 text-white text-sm
                       placeholder-gray-600
-                      focus:outline-none focus:border-orange-500
+                      focus:outline-none focus:border-red-600
                       transition-colors duration-300
                     "
                   />
@@ -939,7 +942,8 @@ const PlansManager = () => {
                 disabled={saving}
                 className="
                   w-full py-3.5 mt-2
-                  bg-orange-500 hover:bg-orange-600
+                  bg-red-600 hover:bg-Replace: red-700
+
                   disabled:opacity-50 disabled:cursor-not-allowed
                   text-white text-xs tracking-widest uppercase font-medium
                   rounded-lg transition-all duration-300

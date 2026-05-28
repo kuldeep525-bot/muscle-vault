@@ -1,7 +1,7 @@
 const features = [
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
         <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
         <line x1="6" y1="1" x2="6" y2="4"/>
@@ -16,7 +16,7 @@ const features = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
         <circle cx="9" cy="7" r="4"/>
         <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -30,7 +30,7 @@ const features = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
@@ -41,7 +41,7 @@ const features = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
     ),
@@ -52,7 +52,7 @@ const features = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"/>
         <polyline points="12 6 12 12 16 14"/>
       </svg>
@@ -64,7 +64,7 @@ const features = [
   },
   {
     icon: (
-      <svg width="28" height="28" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
       </svg>
     ),
@@ -80,18 +80,18 @@ const Features = () => {
     <section id="features" className="section-padding bg-[#0a0a0a] relative overflow-hidden">
 
       {/* Background glow */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-orange-500/5 blur-[120px]"/>
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-red-600/5 blur-[120px]"/>
 
       <div className="container-custom relative z-10">
 
         {/* SECTION HEADER */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-orange-500"/>
-            <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+            <div className="w-8 h-0.5 bg-red-600"/>
+            <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
               Why Choose Us
             </span>
-            <div className="w-8 h-0.5 bg-orange-500"/>
+            <div className="w-8 h-0.5 bg-red-600"/>
           </div>
           <h2 className="font-bebas text-5xl lg:text-6xl tracking-wider text-white leading-none">
             WORLD CLASS <span className="text-gradient">FACILITIES</span>
@@ -110,7 +110,7 @@ const Features = () => {
                 group relative
                 bg-[#111] border border-white/5
                 rounded-lg p-6
-                hover:border-orange-500/30
+                hover:border-red-600/30
                 transition-all duration-300
                 hover:-translate-y-1
                 overflow-hidden
@@ -120,13 +120,13 @@ const Features = () => {
               <div className="
                 absolute inset-0 opacity-0 group-hover:opacity-100
                 transition-opacity duration-300
-                bg-gradient-to-br from-orange-500/5 to-transparent
+                bg-gradient-to-br from-red-600/5 to-transparent
               "/>
 
               {/* Left orange border */}
               <div className="
                 absolute left-0 top-0 bottom-0 w-0.5
-                bg-gradient-to-b from-orange-500 to-transparent
+                bg-gradient-to-b from-red-600 to-transparent
                 opacity-0 group-hover:opacity-100
                 transition-opacity duration-300
               "/>
@@ -137,8 +137,8 @@ const Features = () => {
                 {/* Icon box */}
                 <div className="
                   w-14 h-14 rounded-lg
-                  bg-orange-500/10
-                  group-hover:bg-orange-500/20
+                  bg-red-600/10
+                  group-hover:bg-red-600/20
                   flex items-center justify-center
                   transition-all duration-300
                 ">
@@ -147,7 +147,7 @@ const Features = () => {
 
                 {/* Stat */}
                 <div className="text-right">
-                  <div className="font-bebas text-2xl text-orange-500 tracking-wider">
+                  <div className="font-bebas text-2xl text-red-600 tracking-wider">
                     {feature.stat}
                   </div>
                   <div className="text-xs text-gray-600 tracking-wider uppercase">
@@ -177,8 +177,8 @@ const Features = () => {
         {/* BOTTOM STRIP */}
         <div className="
           mt-16 p-6 rounded-lg
-          bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent
-          border border-orange-500/20
+          bg-gradient-to-r from-red-600/10 via-red-600/5 to-transparent
+          border border-red-600/20
           flex flex-col sm:flex-row items-center justify-between gap-4
         ">
           <div>
@@ -193,10 +193,11 @@ const Features = () => {
             href="/#contact"
             className="
               shrink-0 px-8 py-3
-              bg-orange-500 hover:bg-orange-600
+              bg-red-600 hover:bg-Replace: red-700
+
               text-white text-xs tracking-widest uppercase font-medium
               rounded transition-all duration-300
-              hover:shadow-lg hover:shadow-orange-500/25
+              hover:shadow-lg hover:shadow-red-600/25
             "
           >
             Book Free Trial

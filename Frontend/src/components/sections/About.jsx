@@ -3,7 +3,7 @@ const About = () => {
     <section id="about" className="section-padding bg-[#0d0d0d] relative overflow-hidden">
 
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-orange-500/5 blur-[100px]"/>
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-red-600/5 blur-[100px]"/>
 
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -37,7 +37,7 @@ const About = () => {
             {/* Experience badge */}
             <div className="
               absolute -left-4 top-8
-              bg-orange-500 rounded-lg p-4
+              bg-red-600 rounded-lg p-4
               flex flex-col items-center justify-center
               w-24 h-24
             ">
@@ -54,8 +54,8 @@ const About = () => {
 
             {/* Section label */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-0.5 bg-orange-500"/>
-              <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+              <div className="w-8 h-0.5 bg-red-600"/>
+              <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
                 About Us
               </span>
             </div>
@@ -94,9 +94,9 @@ const About = () => {
                   className="flex items-center gap-3 group"
                 >
                   <div className="
-                    w-8 h-8 rounded bg-orange-500/10
+                    w-8 h-8 rounded bg-red-600/10
                     flex items-center justify-center
-                    group-hover:bg-orange-500/20
+                    group-hover:bg-red-600/20
                     transition-all duration-300
                     shrink-0 text-sm
                   ">
@@ -114,10 +114,11 @@ const About = () => {
               href="/#plans"
               className="
                 inline-flex items-center gap-3
-                px-8 py-4 bg-orange-500 hover:bg-orange-600
+                px-8 py-4 bg-red-600 hover:bg-Replace: red-700
+
                 text-white text-xs tracking-widest uppercase font-medium
                 rounded transition-all duration-300
-                hover:shadow-lg hover:shadow-orange-500/25
+                hover:shadow-lg hover:shadow-red-600/25
               "
             >
               Start Your Journey

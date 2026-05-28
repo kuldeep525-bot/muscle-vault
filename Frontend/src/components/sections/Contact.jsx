@@ -57,18 +57,18 @@ const Contact = () => {
     <section id="contact" className="section-padding bg-[#0d0d0d] relative overflow-hidden">
 
       {/* Background glow */}
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-orange-500/5 blur-[100px]"/>
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-red-600/5 blur-[100px]"/>
 
       <div className="container-custom relative z-10">
 
         {/* SECTION HEADER */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-orange-500"/>
-            <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+            <div className="w-8 h-0.5 bg-red-600"/>
+            <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
               Get In Touch
             </span>
-            <div className="w-8 h-0.5 bg-orange-500"/>
+            <div className="w-8 h-0.5 bg-red-600"/>
           </div>
           <h2 className="font-bebas text-5xl lg:text-6xl tracking-wider text-white leading-none">
             CONTACT <span className="text-gradient">US</span>
@@ -88,7 +88,7 @@ const Contact = () => {
             {[
               {
                 icon: (
-                  <svg width="20" height="20" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <svg width="20" height="20" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                     <circle cx="12" cy="10" r="3"/>
                   </svg>
@@ -99,7 +99,7 @@ const Contact = () => {
               },
               {
                 icon: (
-                  <svg width="20" height="20" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <svg width="20" height="20" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                   </svg>
                 ),
@@ -109,7 +109,7 @@ const Contact = () => {
               },
               {
                 icon: (
-                  <svg width="20" height="20" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <svg width="20" height="20" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                     <polyline points="22,6 12,13 2,6"/>
                   </svg>
@@ -120,7 +120,7 @@ const Contact = () => {
               },
               {
                 icon: (
-                  <svg width="20" height="20" fill="none" stroke="#ff6b00" strokeWidth="1.5" viewBox="0 0 24 24">
+                  <svg width="20" height="20" fill="none" stroke="#dc2626" strokeWidth="1.5" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"/>
                     <polyline points="12 6 12 12 16 14"/>
                   </svg>
@@ -136,15 +136,15 @@ const Contact = () => {
                   flex items-start gap-4
                   bg-[#111] border border-white/5
                   rounded-xl p-5
-                  hover:border-orange-500/20
+                  hover:border-red-600/20
                   transition-all duration-300
                   group
                 "
               >
                 <div className="
                   w-12 h-12 rounded-lg
-                  bg-orange-500/10
-                  group-hover:bg-orange-500/20
+                  bg-red-600/10
+                  group-hover:bg-red-600/20
                   flex items-center justify-center
                   shrink-0
                   transition-all duration-300
@@ -152,7 +152,7 @@ const Contact = () => {
                   {item.icon}
                 </div>
                 <div>
-                  <div className="text-xs tracking-widest uppercase text-orange-500 mb-1">
+                  <div className="text-xs tracking-widest uppercase text-red-600 mb-1">
                     {item.label}
                   </div>
                   <div className="text-white text-sm font-medium">
@@ -195,7 +195,7 @@ const Contact = () => {
                         w-full bg-[#0a0a0a] border border-white/10
                         rounded-lg px-4 py-3
                         text-white text-sm placeholder-gray-600
-                        focus:outline-none focus:border-orange-500
+                        focus:outline-none focus:border-red-600
                         transition-colors duration-300
                       "
                     />
@@ -214,7 +214,7 @@ const Contact = () => {
                         w-full bg-[#0a0a0a] border border-white/10
                         rounded-lg px-4 py-3
                         text-white text-sm placeholder-gray-600
-                        focus:outline-none focus:border-orange-500
+                        focus:outline-none focus:border-red-600
                         transition-colors duration-300
                       "
                     />
@@ -236,7 +236,7 @@ const Contact = () => {
                       w-full bg-[#0a0a0a] border border-white/10
                       rounded-lg px-4 py-3
                       text-white text-sm placeholder-gray-600
-                      focus:outline-none focus:border-orange-500
+                      focus:outline-none focus:border-red-600
                       transition-colors duration-300
                     "
                   />
@@ -255,7 +255,7 @@ const Contact = () => {
                       w-full bg-[#0a0a0a] border border-white/10
                       rounded-lg px-4 py-3
                       text-sm
-                      focus:outline-none focus:border-orange-500
+                      focus:outline-none focus:border-red-600
                       transition-colors duration-300
                       text-gray-400
                     "
@@ -284,7 +284,7 @@ const Contact = () => {
                       w-full bg-[#0a0a0a] border border-white/10
                       rounded-lg px-4 py-3
                       text-white text-sm placeholder-gray-600
-                      focus:outline-none focus:border-orange-500
+                      focus:outline-none focus:border-red-600
                       transition-colors duration-300
                       resize-none
                     "
@@ -297,11 +297,12 @@ const Contact = () => {
                   disabled={loading}
                   className="
                     w-full py-4
-                    bg-orange-500 hover:bg-orange-600
+                    bg-red-600 hover:bg-Replace: red-700
+
                     disabled:opacity-50 disabled:cursor-not-allowed
                     text-white text-xs tracking-widest uppercase font-medium
                     rounded-lg transition-all duration-300
-                    hover:shadow-lg hover:shadow-orange-500/25
+                    hover:shadow-lg hover:shadow-red-600/25
                     flex items-center justify-center gap-2
                   "
                 >

@@ -54,18 +54,18 @@ const Trainers = () => {
     <section id="trainers" className="section-padding bg-[#0a0a0a] relative overflow-hidden">
 
       {/* Background glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-orange-500/5 blur-[100px]"/>
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-red-600/5 blur-[100px]"/>
 
       <div className="container-custom relative z-10">
 
         {/* SECTION HEADER */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-0.5 bg-orange-500"/>
-            <span className="text-xs tracking-[4px] uppercase text-orange-500 font-medium">
+            <div className="w-8 h-0.5 bg-red-600"/>
+            <span className="text-xs tracking-[4px] uppercase text-red-600 font-medium">
               Our Team
             </span>
-            <div className="w-8 h-0.5 bg-orange-500"/>
+            <div className="w-8 h-0.5 bg-red-600"/>
           </div>
           <h2 className="font-bebas text-5xl lg:text-6xl tracking-wider text-white leading-none">
             MEET THE <span className="text-gradient">TRAINERS</span>
@@ -85,7 +85,7 @@ const Trainers = () => {
                 group relative bg-[#111]
                 border border-white/5
                 rounded-xl overflow-hidden
-                hover:border-orange-500/30
+                hover:border-red-600/30
                 transition-all duration-300
                 hover:-translate-y-1
               "
@@ -113,7 +113,7 @@ const Trainers = () => {
                 {/* Experience badge */}
                 <div className="
                   absolute top-3 right-3
-                  bg-orange-500/90 text-white
+                  bg-red-600/90 text-white
                   text-xs tracking-wider px-2.5 py-1 rounded
                 ">
                   {trainer.experience}
@@ -128,7 +128,7 @@ const Trainers = () => {
                 <h3 className="font-bebas text-lg tracking-wider text-white leading-tight">
                   {trainer.name}
                 </h3>
-                <div className="text-orange-500 text-xs tracking-widest uppercase mt-0.5 mb-3">
+                <div className="text-red-600 text-xs tracking-widest uppercase mt-0.5 mb-3">
                   {trainer.specialty}
                 </div>
 
@@ -162,7 +162,7 @@ const Trainers = () => {
                   {/* Stars */}
                   <div className="flex gap-0.5">
                     {[...Array(trainer.rating)].map((_, i) => (
-                      <svg key={i} width="12" height="12" fill="#ff6b00" viewBox="0 0 24 24">
+                      <svg key={i} width="12" height="12" fill="#dc2626" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     ))}
@@ -199,8 +199,8 @@ const Trainers = () => {
             className="
               inline-flex items-center gap-2
               px-8 py-3.5
-              border border-orange-500 text-orange-500
-              hover:bg-orange-500 hover:text-white
+              border border-red-600 text-red-600
+              hover:bg-red-600 hover:text-white
               text-xs tracking-widest uppercase font-medium
               rounded transition-all duration-300
             "

@@ -48,7 +48,7 @@
 //         {/* LOGO */}
 //         <Link to="/" className="flex items-center gap-2">
 //           <span className="font-bebas text-2xl tracking-widest text-white">
-//             MUSCLE <span className="text-orange-500">VAULT</span>
+//             MUSCLE <span className="text-red-600">VAULT</span>
 //           </span>
 //         </Link>
 
@@ -60,7 +60,7 @@
 //               href={link.href}
 //               className="
 //                 text-xs tracking-widest uppercase font-medium
-//                 text-gray-400 hover:text-orange-500
+//                 text-gray-400 hover:text-red-600
 //                 transition-colors duration-300
 //                 relative group
 //               "
@@ -69,7 +69,7 @@
 //               {/* Underline animation */}
 //               <span className="
 //                 absolute -bottom-1 left-0 w-0 h-[1px]
-//                 bg-orange-500 group-hover:w-full
+//                 bg-red-600 group-hover:w-full
 //                 transition-all duration-300
 //               "/>
 //             </a>
@@ -85,7 +85,7 @@
 //                   to="/dashboard"
 //                   className="
 //                     text-xs tracking-widest uppercase font-medium
-//                     text-orange-500 hover:text-white
+//                     text-red-600 hover:text-white
 //                     transition-colors duration-300
 //                   "
 //                 >
@@ -97,7 +97,7 @@
 //                 className="
 //                   text-xs tracking-widest uppercase font-medium px-5 py-2.5
 //                   border border-white/20 text-gray-400
-//                   hover:border-orange-500 hover:text-orange-500
+//                   hover:border-red-600 hover:text-red-600
 //                   rounded transition-all duration-300
 //                 "
 //               >
@@ -120,7 +120,8 @@
 //                 to="/signup"
 //                 className="
 //                   text-xs tracking-widest uppercase font-medium
-//                   px-5 py-2.5 bg-orange-500 hover:bg-orange-600
+//                   px-5 py-2.5 bg-red-600 hover:bg-Replace: red-700
+
 //                   text-white rounded transition-all duration-300
 //                 "
 //               >
@@ -168,7 +169,7 @@
 //               href={link.href}
 //               className="
 //                 text-sm tracking-widest uppercase
-//                 text-gray-400 hover:text-orange-500
+//                 text-gray-400 hover:text-red-600
 //                 transition-colors duration-300 py-2
 //                 border-b border-white/5
 //               "
@@ -185,7 +186,7 @@
 //                     to="/dashboard"
 //                     className="
 //                       text-sm tracking-widest uppercase text-center
-//                       py-3 border border-orange-500 text-orange-500
+//                       py-3 border border-red-600 text-red-600
 //                       rounded transition-all duration-300
 //                     "
 //                   >
@@ -219,7 +220,7 @@
 //                   to="/signup"
 //                   className="
 //                     text-sm tracking-widest uppercase text-center
-//                     py-3 bg-orange-500 text-white
+//                     py-3 bg-red-600 text-white
 //                     rounded transition-all duration-300
 //                   "
 //                 >
@@ -292,7 +293,7 @@ const Navbar = () => {
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-2">
           <span className="font-bebas text-2xl tracking-widest text-white">
-            MUSCLE <span className="text-orange-500">VAULT</span>
+            MUSCLE <span className="text-red-600">VAULT</span>
           </span>
         </Link>
 
@@ -304,7 +305,7 @@ const Navbar = () => {
               href={link.href}
               className="
                 text-xs tracking-widest uppercase font-medium
-                text-gray-400 hover:text-orange-500
+                text-gray-400 hover:text-red-600
                 transition-colors duration-300
                 relative group
               "
@@ -315,7 +316,7 @@ const Navbar = () => {
               <span
                 className="
                   absolute -bottom-1 left-0 w-0 h-[1px]
-                  bg-orange-500 group-hover:w-full
+                  bg-red-600 group-hover:w-full
                   transition-all duration-300
                 "
               />
@@ -332,7 +333,7 @@ const Navbar = () => {
                   to="/dashboard"
                   className="
                     text-xs tracking-widest uppercase font-medium
-                    text-orange-500 hover:text-white
+                    text-red-600 hover:text-white
                     transition-colors duration-300
                   "
                 >
@@ -347,7 +348,7 @@ const Navbar = () => {
                   px-5 py-2.5
                   border border-white/20
                   text-gray-400
-                  hover:border-orange-500 hover:text-orange-500
+                  hover:border-red-600 hover:text-red-600
                   rounded transition-all duration-300
                 "
               >
@@ -372,7 +373,8 @@ const Navbar = () => {
                 className="
                   text-xs tracking-widest uppercase font-medium
                   px-5 py-2.5
-                  bg-orange-500 hover:bg-orange-600
+                  bg-red-600 hover:bg-Replace: red-700
+
                   text-white rounded
                   transition-all duration-300
                 "
@@ -433,7 +435,7 @@ const Navbar = () => {
               href={link.href}
               className="
                 text-sm tracking-widest uppercase
-                text-gray-400 hover:text-orange-500
+                text-gray-400 hover:text-red-600
                 transition-colors duration-300
                 py-2 border-b border-white/5
               "
@@ -452,8 +454,8 @@ const Navbar = () => {
                     className="
                       text-sm tracking-widest uppercase text-center
                       py-3
-                      border border-orange-500
-                      text-orange-500
+                      border border-red-600
+                      text-red-600
                       rounded
                       transition-all duration-300
                     "
@@ -497,7 +499,7 @@ const Navbar = () => {
                   className="
                     text-sm tracking-widest uppercase text-center
                     py-3
-                    bg-orange-500
+                    bg-red-600
                     text-white
                     rounded
                     transition-all duration-300

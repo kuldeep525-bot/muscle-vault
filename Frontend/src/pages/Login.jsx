@@ -53,10 +53,10 @@ const Login = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/50 to-[#0a0a0a]"/>
         <div className="absolute inset-0 flex flex-col justify-between p-12">
           <Link to="/" className="font-bebas text-2xl tracking-widest text-white">
-            MUSCLE <span className="text-orange-500">VAULT</span>
+            MUSCLE <span className="text-red-600">VAULT</span>
           </Link>
           <div>
-            <div className="w-12 h-0.5 bg-orange-500 mb-6"/>
+            <div className="w-12 h-0.5 bg-red-600 mb-6"/>
             <h2 className="font-bebas text-5xl tracking-wider text-white leading-tight mb-4">
               YOUR STRENGTH<br/>
               <span className="text-gradient">JOURNEY</span><br/>
@@ -74,7 +74,7 @@ const Login = () => {
               { num: '4.9',  label: 'Rating' },
             ].map((s) => (
               <div key={s.label}>
-                <div className="font-bebas text-3xl text-orange-500 tracking-wider">{s.num}</div>
+                <div className="font-bebas text-3xl text-red-600 tracking-wider">{s.num}</div>
                 <div className="text-xs text-gray-500 tracking-wider uppercase">{s.label}</div>
               </div>
             ))}
@@ -88,14 +88,14 @@ const Login = () => {
 
           {/* Mobile logo */}
           <Link to="/" className="lg:hidden font-bebas text-2xl tracking-widest text-white block mb-10">
-            MUSCLE <span className="text-orange-500">VAULT</span>
+            MUSCLE <span className="text-red-600">VAULT</span>
           </Link>
 
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-6 h-0.5 bg-orange-500"/>
-              <span className="text-xs tracking-[4px] uppercase text-orange-500">
+              <div className="w-6 h-0.5 bg-red-600"/>
+              <span className="text-xs tracking-[4px] uppercase text-red-600">
                 Welcome Back
               </span>
             </div>
@@ -104,7 +104,7 @@ const Login = () => {
             </h1>
             <p className="text-gray-500 text-sm mt-2">
               Account nahi hai?{' '}
-              <Link to="/signup" className="text-orange-500 hover:underline">
+              <Link to="/signup" className="text-red-600 hover:underline">
                 Sign up karo
               </Link>
             </p>
@@ -128,7 +128,7 @@ const Login = () => {
                   w-full bg-[#111] border border-white/10
                   rounded-lg px-4 py-3.5
                   text-white text-sm placeholder-gray-600
-                  focus:outline-none focus:border-orange-500
+                  focus:outline-none focus:border-red-600
                   transition-colors duration-300
                 "
               />
@@ -150,7 +150,7 @@ const Login = () => {
                     w-full bg-[#111] border border-white/10
                     rounded-lg px-4 py-3.5 pr-12
                     text-white text-sm placeholder-gray-600
-                    focus:outline-none focus:border-orange-500
+                    focus:outline-none focus:border-red-600
                     transition-colors duration-300
                   "
                 />
@@ -159,7 +159,7 @@ const Login = () => {
                   onClick={() => setShowPassword(!showPassword)}
                   className="
                     absolute right-4 top-1/2 -translate-y-1/2
-                    text-gray-500 hover:text-orange-500
+                    text-gray-500 hover:text-red-600
                     transition-colors duration-300
                   "
                 >
@@ -185,11 +185,12 @@ const Login = () => {
               disabled={loading}
               className="
                 w-full py-4 mt-2
-                bg-orange-500 hover:bg-orange-600
+                bg-red-600 hover:bg-Replace: red-700
+
                 disabled:opacity-50 disabled:cursor-not-allowed
                 text-white text-xs tracking-widest uppercase font-medium
                 rounded-lg transition-all duration-300
-                hover:shadow-lg hover:shadow-orange-500/25
+                hover:shadow-lg hover:shadow-red-600/25
                 flex items-center justify-center gap-2
               "
             >

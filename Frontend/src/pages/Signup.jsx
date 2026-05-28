@@ -80,12 +80,12 @@ const Signup = () => {
 
           {/* Logo */}
           <Link to="/" className="font-bebas text-2xl tracking-widest text-white">
-            MUSCLE <span className="text-orange-500">VAULT</span>
+            MUSCLE <span className="text-red-600">VAULT</span>
           </Link>
 
           {/* Quote */}
           <div>
-            <div className="w-12 h-0.5 bg-orange-500 mb-6"/>
+            <div className="w-12 h-0.5 bg-red-600 mb-6"/>
             <h2 className="font-bebas text-5xl tracking-wider text-white leading-tight mb-4">
               START YOUR<br/>
               <span className="text-gradient">TRANSFORMATION</span><br/>
@@ -106,8 +106,8 @@ const Signup = () => {
               'Track your progress',
             ].map((benefit) => (
               <div key={benefit} className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-orange-500/20 flex items-center justify-center shrink-0">
-                  <svg width="10" height="10" fill="none" stroke="#ff6b00" strokeWidth="2.5" viewBox="0 0 24 24">
+                <div className="w-5 h-5 rounded-full bg-red-600/20 flex items-center justify-center shrink-0">
+                  <svg width="10" height="10" fill="none" stroke="#dc2626" strokeWidth="2.5" viewBox="0 0 24 24">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
                 </div>
@@ -125,14 +125,14 @@ const Signup = () => {
 
           {/* Mobile logo */}
           <Link to="/" className="lg:hidden font-bebas text-2xl tracking-widest text-white block mb-10">
-            MUSCLE <span className="text-orange-500">VAULT</span>
+            MUSCLE <span className="text-red-600">VAULT</span>
           </Link>
 
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-6 h-0.5 bg-orange-500"/>
-              <span className="text-xs tracking-[4px] uppercase text-orange-500">
+              <div className="w-6 h-0.5 bg-red-600"/>
+              <span className="text-xs tracking-[4px] uppercase text-red-600">
                 New Member
               </span>
             </div>
@@ -141,7 +141,7 @@ const Signup = () => {
             </h1>
             <p className="text-gray-500 text-sm mt-2">
               Already member hai?{' '}
-              <Link to="/login" className="text-orange-500 hover:underline">
+              <Link to="/login" className="text-red-600 hover:underline">
                 Login karo
               </Link>
             </p>
@@ -165,7 +165,7 @@ const Signup = () => {
                   w-full bg-[#111] border border-white/10
                   rounded-lg px-4 py-3.5
                   text-white text-sm placeholder-gray-600
-                  focus:outline-none focus:border-orange-500
+                  focus:outline-none focus:border-red-600
                   transition-colors duration-300
                 "
               />
@@ -187,7 +187,7 @@ const Signup = () => {
                     w-full bg-[#111] border border-white/10
                     rounded-lg px-4 py-3.5
                     text-white text-sm placeholder-gray-600
-                    focus:outline-none focus:border-orange-500
+                    focus:outline-none focus:border-red-600
                     transition-colors duration-300
                   "
                 />
@@ -206,7 +206,7 @@ const Signup = () => {
                     w-full bg-[#111] border border-white/10
                     rounded-lg px-4 py-3.5
                     text-white text-sm placeholder-gray-600
-                    focus:outline-none focus:border-orange-500
+                    focus:outline-none focus:border-red-600
                     transition-colors duration-300
                   "
                 />
@@ -229,14 +229,14 @@ const Signup = () => {
                     w-full bg-[#111] border border-white/10
                     rounded-lg px-4 py-3.5 pr-12
                     text-white text-sm placeholder-gray-600
-                    focus:outline-none focus:border-orange-500
+                    focus:outline-none focus:border-red-600
                     transition-colors duration-300
                   "
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-orange-500 transition-colors duration-300"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-600 transition-colors duration-300"
                 >
                   {showPassword ? (
                     <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -270,9 +270,9 @@ const Signup = () => {
             {/* Terms */}
             <p className="text-gray-600 text-xs leading-relaxed">
               Account banake tum hamare{' '}
-              <span className="text-orange-500 cursor-pointer">Terms of Service</span>
+              <span className="text-red-600 cursor-pointer">Terms of Service</span>
               {' '}aur{' '}
-              <span className="text-orange-500 cursor-pointer">Privacy Policy</span>
+              <span className="text-red-600 cursor-pointer">Privacy Policy</span>
               {' '}se agree karte ho.
             </p>
 
@@ -282,11 +282,12 @@ const Signup = () => {
               disabled={loading}
               className="
                 w-full py-4
-                bg-orange-500 hover:bg-orange-600
+                bg-red-600 hover:bg-Replace: red-700
+
                 disabled:opacity-50 disabled:cursor-not-allowed
                 text-white text-xs tracking-widest uppercase font-medium
                 rounded-lg transition-all duration-300
-                hover:shadow-lg hover:shadow-orange-500/25
+                hover:shadow-lg hover:shadow-red-600/25
                 flex items-center justify-center gap-2
               "
             >
