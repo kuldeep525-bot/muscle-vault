@@ -1,5 +1,7 @@
 import Member from "../models/member.model.js";
 import Plan from "../models/plan.model.js";
+import User from "../models/user.model.js";
+import { sendPlanAssignedEmail } from "../../utils/email.js";
 
 export const getAllMember = async (req, res) => {
   try {
@@ -149,13 +151,53 @@ export const deleteMember = async (req, res) => {
   }
 };
 
+// export const assignPlan = async (req, res) => {
+//   try {
+//     const { _id } = req.params;
+//     const { planId } = req.body;
+
+//     const member = await Member.findById(_id);
+
+//     if (!member) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "Member not found",
+//       });
+//     }
+
+//     // Plan exist karta hai check karo
+//     const plan = await Plan.findById(planId);
+//     if (!plan) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "Plan not found",
+//       });
+//     }
+
+//     member.planId = planId;
+//     member.membershipStatus = "active";
+
+//     await member.save();
+
+//     return res.status(200).json({
+//       success: true,
+//       message: "Plan assigned successfully",
+//       data: member,
+//     });
+//   } catch (error) {
+//     console.log("error", error);
+//     return res.status(500).json({
+//       success: false,
+//       message: "Internal server error",
+//     });
+//   }
+// };
 export const assignPlan = async (req, res) => {
   try {
     const { _id } = req.params;
     const { planId } = req.body;
 
     const member = await Member.findById(_id);
-
     if (!member) {
       return res.status(404).json({
         success: false,
@@ -163,7 +205,6 @@ export const assignPlan = async (req, res) => {
       });
     }
 
-    // Plan exist karta hai check karo
     const plan = await Plan.findById(planId);
     if (!plan) {
       return res.status(404).json({
@@ -174,8 +215,21 @@ export const assignPlan = async (req, res) => {
 
     member.planId = planId;
     member.membershipStatus = "active";
-
     await member.save();
+
+    // User details lo
+    const user = await User.findById(member.userId);
+
+    // Email bhejo
+    await sendPlanAssignedEmail({
+      userEmail: user.email,
+      userName: user.name,
+      planName: plan.name,
+      duration: plan.duration,
+      price: plan.price,
+      startDate: member.membershipStart || "Not set",
+      endDate: member.membershipEnd || "Not set",
+    });
 
     return res.status(200).json({
       success: true,
@@ -183,14 +237,13 @@ export const assignPlan = async (req, res) => {
       data: member,
     });
   } catch (error) {
-    console.log("error", error);
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
     });
   }
 };
-
 export const checkExpiry = async (req, res) => {
   try {
     // Aaj ki date

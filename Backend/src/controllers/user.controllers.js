@@ -1,7 +1,9 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 import Member from "../models/member.model.js";
+import { sendEmail } from "../../utils/sendEmail.js";
 
 export const register = async (req, res) => {
   try {
@@ -326,3 +328,116 @@ export const logout = async (req, res) => {
 //       .json({ message: "internal server error", success: false });
 //   }
 // };
+
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res
+        .status(200)
+        .json({ message: "If this email exists, OTP has been sent" });
+    }
+
+    // 4 digit OTP generate karo
+    const otp = Math.floor(1000 + Math.random() * 9000).toString();
+
+    // Hash karke save karo
+    const hashOtp = crypto.createHash("sha256").update(otp).digest("hex");
+
+    user.otp = hashOtp;
+    user.otpExpiry = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+    await user.save({ validateBeforeSave: false });
+
+    const message = `Your MuscleValut password reset OTP is: ${otp}\n\nThis OTP will expire in 10 minutes.\n\nIf you did not request this, please ignore.`;
+
+    await sendEmail({
+      to: user.email,
+      subject: "Password Reset OTP",
+      text: message,
+    });
+
+    res
+      .status(200)
+      .json({ message: "If this email exists, OTP has been sent" });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+// OTP Verify karo
+export const verifyOtp = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+    // console.log("Email:", email); // ← add karo
+    console.log("OTP:", otp);
+    if (!email || !otp) {
+      return res.status(400).json({ message: "Email and OTP are required" });
+    }
+
+    const hashOtp = crypto.createHash("sha256").update(otp).digest("hex");
+
+    const user = await User.findOne({
+      email,
+      otp: hashOtp,
+      otpExpiry: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: "Invalid or expired OTP" });
+    }
+
+    res.status(200).json({ message: "OTP verified successfully" });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Reset Password
+export const resetPassword = async (req, res) => {
+  try {
+    const { email, otp, password, confirmPassword } = req.body;
+
+    if (!password || !confirmPassword) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: "Passwords do not match" });
+    }
+
+    const hashOtp = crypto.createHash("sha256").update(otp).digest("hex");
+
+    const user = await User.findOne({
+      email,
+      otp: hashOtp,
+      otpExpiry: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: "Invalid or expired OTP" });
+    }
+
+    user.password = await bcrypt.hash(password, 10);
+    user.otp = undefined;
+    user.otpExpiry = undefined;
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Password reset successful. Please login again." });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};

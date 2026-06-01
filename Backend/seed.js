@@ -73,10 +73,10 @@ const seedDatabase = async () => {
   try {
     // DB connect
     await mongoose.connect(`${process.env.MONGO_URI}`);
-    console.log("✅ MongoDB connected");
+    console.log(" MongoDB connected");
 
     // Pehle plans banao
-    console.log("📦 Plans bana raha hoon...");
+    console.log(" Plans bana raha hoon...");
     await Plan.deleteMany({});
 
     const plans = await Plan.insertMany([
@@ -84,10 +84,10 @@ const seedDatabase = async () => {
       { name: "PRO", duration: 3, price: 2499, isActive: true },
       { name: "ELITE", duration: 12, price: 7999, isActive: true },
     ]);
-    console.log("✅ 3 Plans bane");
+    console.log(" 3 Plans bane");
 
     // 100 users + members banao
-    console.log("👥 100 Members bana raha hoon...");
+    console.log(" 100 Members bana raha hoon...");
 
     const statuses = ["active", "nonActive"];
     const paymentStatuses = ["paid", "due", "overdue"];
