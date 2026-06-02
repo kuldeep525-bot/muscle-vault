@@ -134,6 +134,7 @@ export const deleteMember = async (req, res) => {
       });
     }
 
+    await User.findByIdAndDelete(member.userId);
     await Member.findByIdAndDelete(_id);
 
     return res.status(200).json({

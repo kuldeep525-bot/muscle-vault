@@ -82,6 +82,18 @@ export const login = async (req, res) => {
         .json({ message: "Invalid Credentials", success: false });
     }
 
+    const member = await Member.findOne({
+      userId: user._id,
+    });
+
+    if (!member) {
+      return res.status(403).json({
+        success: false,
+        message:
+          "Your membership account has been removed. Please register again.",
+      });
+    }
+
     const token = jwt.sign(
       {
         userId: user._id,
