@@ -18,7 +18,7 @@ const port = process.env.PORT || 9000;
 app.use(
   cors({
     // origin: "http://localhost:",
-    origin: "https://muscle-vault-phi.vercel.app/",
+    origin: "https://muscle-vault-phi.vercel.app",
     credentials: true,
   }),
 );
