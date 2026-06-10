@@ -25,11 +25,11 @@ const Signup = () => {
 
     // Validation
     if (!form.name || !form.email || !form.password) {
-      toast.error('Saare required fields bharo!')
+      toast.error('Please fill in all required fields!')
       return
     }
     if (form.password.length < 6) {
-      toast.error('Password kam se kam 6 characters ka hona chahiye!')
+      toast.error('Password must be at least 6 characters long!')
       return
     }
     
@@ -92,8 +92,8 @@ const Signup = () => {
               TODAY
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Muscle Vault join karo aur apni fitness journey
-              ki shuruaat karo. First step sabse important hota hai!
+              Join Muscle Vault and begin your fitness journey today.
+  The first step is always the most important.
             </p>
           </div>
 
@@ -140,11 +140,11 @@ const Signup = () => {
               CREATE YOUR<br/>ACCOUNT
             </h1>
             <p className="text-gray-500 text-sm mt-2">
-              Already member hai?{' '}
-              <Link to="/login" className="text-red-600 hover:underline">
-                Login karo
-              </Link>
-            </p>
+  Already have an account?{' '}
+  <Link to="/login" className="text-red-600 hover:underline">
+    Log In
+  </Link>
+</p>
           </div>
 
           {/* Form */}
@@ -269,12 +269,11 @@ const Signup = () => {
 
             {/* Terms */}
             <p className="text-gray-600 text-xs leading-relaxed">
-              Account banake tum hamare{' '}
-              <span className="text-red-600 cursor-pointer">Terms of Service</span>
-              {' '}aur{' '}
-              <span className="text-red-600 cursor-pointer">Privacy Policy</span>
-              {' '}se agree karte ho.
-            </p>
+  By creating an account, you agree to our{' '}
+  <span className="text-red-600 cursor-pointer">Terms of Service</span>
+  {' '}and{' '}
+  <span className="text-red-600 cursor-pointer">Privacy Policy</span>.
+</p>
 
             {/* Submit */}
             <button
@@ -282,7 +281,7 @@ const Signup = () => {
               disabled={loading}
               className="
                 w-full py-4
-                bg-red-600 hover:bg-Replace: red-700
+              bg-red-600 hover:bg-red-700
 
                 disabled:opacity-50 disabled:cursor-not-allowed
                 text-white text-xs tracking-widest uppercase font-medium

@@ -14,7 +14,7 @@ const About = () => {
             {/* Main image */}
             <div className="relative rounded-lg overflow-hidden aspect-[4/3] border border-white/5">
               <img
-                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80"
+                src="/images/img6.jpeg"
                 alt="Gym Interior"
                 className="w-full h-full object-cover opacity-75"
               />
@@ -22,20 +22,20 @@ const About = () => {
             </div>
 
             {/* Small image — bottom right */}
-            <div className="
+            {/* <div className="
               absolute -bottom-8 -right-4
               w-48 h-48 rounded-lg overflow-hidden
               border-2 border-[#0d0d0d]
             ">
               <img
-                src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&q=80"
+                // src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&q=80"
                 alt="Training"
                 className="w-full h-full object-cover opacity-80"
               />
-            </div>
+            </div> */}
 
             {/* Experience badge */}
-            <div className="
+            {/* <div className="
               absolute -left-4 top-8
               bg-red-600 rounded-lg p-4
               flex flex-col items-center justify-center
@@ -45,7 +45,7 @@ const About = () => {
               <span className="text-white text-xs tracking-wider text-center leading-tight mt-1">
                 Years of Excellence
               </span>
-            </div>
+            </div> */}
 
           </div>
 

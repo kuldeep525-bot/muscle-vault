@@ -278,7 +278,7 @@ const Contact = () => {
                     value={form.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Apna message yahan likhein..."
+                    placeholder="Write your message..."
                     className="
                       w-full bg-[#0a0a0a] border border-white/10
                       rounded-lg px-4 py-3

@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault()
 
     if (!form.email || !form.password) {
-      toast.error('Email aur password dono bharo!')
+      toast.error('Please enter both email and password!')
       return
     }
 
@@ -34,7 +34,7 @@ const Login = () => {
         navigate('/')
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Kuch galat hua!')
+      toast.error(err.response?.data?.message || 'Something went wrong!')
     } finally {
       setLoading(false)
     }
@@ -63,14 +63,13 @@ const Login = () => {
               AWAITS
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Login karke apni membership, attendance aur
-              progress track karo — sab ek jagah.
+               Log in to track your membership, attendance, and fitness progress — all in one place.
             </p>
           </div>
           <div className="flex gap-8">
             {[
-              { num: '500+', label: 'Members' },
-              { num: '12+',  label: 'Trainers' },
+              { num: '100+', label: 'Members' },
+              { num: '2+',  label: 'Trainers' },
               { num: '4.9',  label: 'Rating' },
             ].map((s) => (
               <div key={s.label}>
@@ -103,9 +102,9 @@ const Login = () => {
               LOGIN TO YOUR<br/>ACCOUNT
             </h1>
             <p className="text-gray-500 text-sm mt-2">
-              Account nahi hai?{' '}
+              Don't have an account?{' '}
               <Link to="/signup" className="text-red-600 hover:underline">
-                Sign up karo
+                Sign up 
               </Link>
             </p>
           </div>
@@ -178,6 +177,15 @@ const Login = () => {
                 </button>
               </div>
             </div>
+
+<div className="flex justify-end">
+  <Link
+    to="/forgot-password"
+    className="text-xs text-gray-500 hover:text-red-600 transition-colors"
+  >
+    Forgot Password?
+  </Link>
+</div>
 
             {/* Submit */}
             <button

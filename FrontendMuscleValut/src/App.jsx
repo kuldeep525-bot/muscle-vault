@@ -105,6 +105,9 @@ import Payments from './pages/Payments'
 import Plans from './pages/Plans'
 import Trainers from './pages/Trainers'
 import Inquiries from './pages/Inquiries'
+import ForgotPassword from './pages/ForgotPassword'
+import VerifyOtp from './pages/VerifyOtp'
+import ResetPassword from './pages/ResetPassword'
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token')
@@ -122,6 +125,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword/>}/>
+        <Route path="/verify-otp" element={<VerifyOtp />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
 
         {/* Admin */}
         <Route path="/dashboard" element={
