@@ -1,4 +1,4 @@
-import Inquiry from "../models/Inquiry.model.js";
+import Inquiry from "../models/inquiry.model.js";
 
 // CREATE INQUIRY — Public
 export const createInquiry = async (req, res) => {
