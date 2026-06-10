@@ -14,7 +14,7 @@ const About = () => {
             {/* Main image */}
             <div className="relative rounded-lg overflow-hidden aspect-[4/3] border border-white/5">
               <img
-                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80"
+                src="/images/img6.jpeg"
                 alt="Gym Interior"
                 className="w-full h-full object-cover opacity-75"
               />
@@ -22,20 +22,20 @@ const About = () => {
             </div>
 
             {/* Small image — bottom right */}
-            <div className="
+            {/* <div className="
               absolute -bottom-8 -right-4
               w-48 h-48 rounded-lg overflow-hidden
               border-2 border-[#0d0d0d]
             ">
               <img
-                src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&q=80"
+                // src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300&q=80"
                 alt="Training"
                 className="w-full h-full object-cover opacity-80"
               />
-            </div>
+            </div> */}
 
             {/* Experience badge */}
-            <div className="
+            {/* <div className="
               absolute -left-4 top-8
               bg-red-600 rounded-lg p-4
               flex flex-col items-center justify-center
@@ -45,7 +45,7 @@ const About = () => {
               <span className="text-white text-xs tracking-wider text-center leading-tight mt-1">
                 Years of Excellence
               </span>
-            </div>
+            </div> */}
 
           </div>
 
@@ -67,25 +67,27 @@ const About = () => {
             </h2>
 
             {/* Description */}
-            <p className="text-gray-400 text-base leading-relaxed mb-4">
-              Muscle Vault sirf ek gym nahi — yeh ek movement hai. 2017 mein
-              shuru hua, aaj Punjab ke sabse trusted fitness centers mein se
-              ek hai. Hamare paas world-class equipment aur certified trainers hain
-              jo tumhare goals ko seriously lete hain.
-            </p>
-            <p className="text-gray-500 text-sm leading-relaxed mb-8">
-              Chahe beginner ho ya advanced athlete — hamare paas har level ke
-              liye customized programs hain. Diet planning se lekar competition
-              prep tak — sab kuch ek hi jagah.
-            </p>
+        <p className="text-gray-400 text-base leading-relaxed mb-4">
+  Muscle Vault is more than just a gym — it's a fitness community dedicated to
+  helping people achieve their goals. Established in 2017, it has grown into
+  one of Punjab's most trusted fitness centers. With world-class equipment and
+  certified trainers, we are committed to delivering results that matter.
+</p>
+
+<p className="text-gray-500 text-sm leading-relaxed mb-8">
+  Whether you're a beginner starting your fitness journey or an experienced
+  athlete aiming for peak performance, we offer customized training programs
+  for every level. From personalized nutrition plans to competition
+  preparation, everything you need is available under one roof.
+</p>
 
             {/* Features list */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {[
-                { icon: '🏋️', text: '100+ Premium Machines' },
+                { icon: '🏋️', text: '20+ Premium Machines' },
                 { icon: '👨‍💼', text: 'Certified Expert Trainers' },
                 { icon: '🥗', text: 'Diet & Nutrition Plans' },
-                { icon: '🚿', text: 'Modern Locker Rooms' },
+                { icon: '🚿', text: 'Modern Plan' },
                 { icon: '📱', text: 'Online Member Portal' },
                 { icon: '🅿️', text: 'Free Parking Available' },
               ].map((item) => (

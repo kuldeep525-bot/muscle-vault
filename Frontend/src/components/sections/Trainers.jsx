@@ -5,7 +5,7 @@ const trainers = [
     specialty: 'Strength & Powerlifting',
     experience: '8 Years',
     certifications: ['NSCA Certified', 'Powerlifting Coach'],
-    bio: 'Ex-national level powerlifter jo ab apni expertise se members ko transform karta hai.',
+    bio: 'Former national-level powerlifter dedicated to helping members achieve exceptional strength and performance results.',
     image: 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80',
     initials: 'RS',
     rating: 5,
@@ -17,38 +17,13 @@ const trainers = [
     specialty: 'Yoga & Functional Fitness',
     experience: '5 Years',
     certifications: ['ACE Certified', 'Yoga Alliance RYT'],
-    bio: 'Holistic approach se fitness — mind aur body dono ko equally important maanti hai.',
+    bio: 'Focused on holistic fitness, combining strength, flexibility, and wellness to create lasting transformations.',
     image: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=400&q=80',
     initials: 'PK',
     rating: 5,
     members: 38,
   },
-  {
-    name: 'ARJUN MEHTA',
-    role: 'Cardio Specialist',
-    specialty: 'Cardio & Weight Loss',
-    experience: '6 Years',
-    certifications: ['ISSA Certified', 'Nutrition Coach'],
-    bio: 'Weight loss aur stamina building mein specialist — 200+ successful transformations.',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80',
-    initials: 'AM',
-    rating: 5,
-    members: 52,
-  },
-  {
-    name: 'SIMRAN BHATIA',
-    role: 'Nutrition Expert',
-    specialty: 'Diet & Nutrition Planning',
-    experience: '4 Years',
-    certifications: ['Precision Nutrition', 'Sports Dietitian'],
-    bio: 'Food aur fitness ka perfect balance — customized diet plans jo actually kaam karte hain.',
-    image: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&q=80',
-    initials: 'SB',
-    rating: 5,
-    members: 60,
-  },
 ]
-
 const Trainers = () => {
   return (
     <section id="trainers" className="section-padding bg-[#0a0a0a] relative overflow-hidden">
@@ -71,13 +46,12 @@ const Trainers = () => {
             MEET THE <span className="text-gradient">TRAINERS</span>
           </h2>
           <p className="text-gray-500 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
-            Hamare certified trainers tumhari fitness journey mein
-            har step pe saath hain — beginner se champion tak.
-          </p>
+  Our certified trainers are here to guide and support you throughout your fitness journey — from beginner to champion.
+</p>
         </div>
 
         {/* TRAINERS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {trainers.map((trainer, index) => (
             <div
               key={index}
@@ -192,8 +166,8 @@ const Trainers = () => {
         {/* BOTTOM CTA */}
         <div className="text-center mt-12">
           <p className="text-gray-500 text-sm mb-4">
-            Apne liye sahi trainer dhundh rahe ho?
-          </p>
+  Looking for the right trainer to achieve your fitness goals?
+</p>
           <a
             href="/#contact"
             className="
@@ -205,7 +179,7 @@ const Trainers = () => {
               rounded transition-all duration-300
             "
           >
-            Free Consultation Book Karo
+            Book a Free Consultation
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>

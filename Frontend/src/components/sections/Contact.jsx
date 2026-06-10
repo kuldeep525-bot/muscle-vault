@@ -74,8 +74,7 @@ const Contact = () => {
             CONTACT <span className="text-gradient">US</span>
           </h2>
           <p className="text-gray-500 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
-            Koi bhi question ho, free trial book karna ho ya
-            membership ke baare mein jaanna ho — hum yahan hain!
+         Whether you have questions, want to schedule a free trial, or need information about our membership plans, our team is ready to assist you.
           </p>
         </div>
 
@@ -94,7 +93,7 @@ const Contact = () => {
                   </svg>
                 ),
                 label: 'Location',
-                value: 'Model Town, Ludhiana',
+                value: 'Town Nayagaon, Punjab',
                 sub: 'Punjab, India — 141002',
               },
               {
@@ -279,7 +278,7 @@ const Contact = () => {
                     value={form.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Apna message yahan likhein..."
+                    placeholder="Write your message..."
                     className="
                       w-full bg-[#0a0a0a] border border-white/10
                       rounded-lg px-4 py-3

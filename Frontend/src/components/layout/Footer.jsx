@@ -15,8 +15,9 @@ const Footer = () => {
             </span>
 
             <p className="mt-4 text-gray-500 text-sm leading-relaxed max-w-sm">
-              Punjab ka #1 fitness destination. State-of-the-art equipment,
-              elite trainers aur ek community jo tumhe push kare limits ke paar.
+            Punjab's #1 fitness destination. Featuring state-of-the-art equipment,
+  expert trainers, and a motivating community that helps you push beyond
+  your limits and achieve your fitness goals.
             </p>
 
             {/* SOCIAL LINKS */}

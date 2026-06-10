@@ -1,5 +1,4 @@
 
-
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import API from '../../utils/api'
@@ -73,8 +72,8 @@ const Plans = () => {
             CHOOSE YOUR <span className="text-gradient">PLAN</span>
           </h2>
           <p className="text-gray-500 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
-            Har budget aur goal ke liye plan available hai.
-            Koi hidden charges nahi — jo dikhta hai wahi dena hai.
+          Flexible membership plans for every budget and fitness goal.
+Transparent pricing with no hidden fees — pay only for what you choose.
           </p>
         </div>
 

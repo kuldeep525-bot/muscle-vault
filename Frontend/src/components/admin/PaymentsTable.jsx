@@ -1,5 +1,17 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 import { useState, useEffect } from 'react'
 import API from '../../utils/api'
 import toast from 'react-hot-toast'
@@ -10,13 +22,7 @@ const statusColors = {
   overdue: 'bg-red-500/10 text-red-400 border-red-500/20',
 }
 
-const months = [
-  'January', 'February', 'March', 'April',
-  'May', 'June', 'July', 'August',
-  'September', 'October', 'November', 'December',
-]
-
-const currentMonth = `${months[new Date().getMonth()]} ${new Date().getFullYear()}`
+const currentMonth = new Date().toISOString().slice(0, 7)
 
 const PaymentsTable = () => {
   const [payments, setPayments] = useState([])
@@ -52,7 +58,7 @@ const PaymentsTable = () => {
       setPayments(data.data || [])
     } catch (err) {
       if (err.response?.status !== 404) {
-        toast.error('Payments load nahi hue!')
+toast.error('Failed to load payments!')
       }
 
       setPayments([])
@@ -67,7 +73,7 @@ const PaymentsTable = () => {
       const { data } = await API.get('/member/getAll')
       setMembers(data.data || [])
     } catch {
-      toast.error('Members load nahi hue!')
+      toast.error('Failed to load members!')
     }
   }
 
@@ -75,10 +81,9 @@ const PaymentsTable = () => {
   const fetchPlans = async () => {
     try {
       const { data } = await API.get('/plan/getAll')
-      console.log(data) // check karo response
       setPlans(data.plan || [])
     } catch {
-      toast.error('Plans load nahi hue!')
+      toast.error('Failed to load plans!')
     }
   }
 
@@ -96,7 +101,7 @@ const PaymentsTable = () => {
     e.preventDefault()
 
     if (!form.memberId || !form.planId || !form.amount) {
-      toast.error('Member, Plan aur Amount required hai!')
+      toast.error('Member, plan and amount are required!')
       return
     }
 
@@ -127,7 +132,10 @@ const PaymentsTable = () => {
         paidAt: new Date().toISOString().split('T')[0],
       })
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Save nahi hua!')
+      toast.error(
+  err.response?.data?.message ||
+  'Failed to save payment record!'
+)
     } finally {
       setSaving(false)
     }
@@ -143,23 +151,50 @@ const PaymentsTable = () => {
       toast.success('Status updated!')
       fetchPayments()
     } catch {
-      toast.error('Update nahi hua!')
+      toast.error('Failed to update status!')
     }
   }
 
   // DELETE PAYMENT
-  const handleDelete = async (id) => {
-    if (!window.confirm('Yeh payment record delete karna chahte ho?')) return
+ const handleDelete = (id) => {
+  toast((t) => (
+    <div className="flex flex-col gap-3">
+      <p className="text-sm text-white">
+        Are you sure you want to delete this payment record?
+      </p>
 
-    try {
-      await API.delete(`/payment/delete/${id}`)
+      <div className="flex gap-2">
+        <button
+          onClick={async () => {
+            toast.dismiss(t.id)
 
-      toast.success('Deleted!')
-      fetchPayments()
-    } catch {
-      toast.error('Delete nahi hua!')
-    }
-  }
+            try {
+              await API.delete(`/payment/delete/${id}`)
+
+              toast.success('Payment record deleted successfully!')
+
+              fetchPayments()
+            } catch {
+              toast.error('Failed to delete payment record!')
+            }
+          }}
+          className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-md text-xs"
+        >
+          Delete
+        </button>
+
+        <button
+          onClick={() => toast.dismiss(t.id)}
+          className="px-3 py-1.5 bg-gray-700 hover:bg-gray-800 text-white rounded-md text-xs"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  ), {
+    duration: 10000,
+  })
+}
 
   const paidCount = payments.filter((p) => p.status === 'paid').length
   const dueCount = payments.filter((p) => p.status === 'due').length
@@ -180,14 +215,13 @@ const PaymentsTable = () => {
           </h2>
 
           <p className="text-gray-500 text-xs mt-0.5">
-            Monthly payment status track karo
+            Track and manage monthly payment records
           </p>
         </div>
 
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-Replace: red-700
- text-white text-xs tracking-widest uppercase font-medium rounded-lg transition-all duration-300"
+          className="flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs tracking-widest uppercase font-medium rounded-lg transition-all duration-300"
         >
           Add Payment
         </button>
@@ -198,9 +232,11 @@ const PaymentsTable = () => {
 
         <div className="border rounded-xl p-4 bg-green-500/10 border-green-500/20">
           <div className="text-2xl mb-2">✅</div>
+
           <div className="font-bebas text-3xl tracking-wider text-green-400">
             {paidCount}
           </div>
+
           <div className="text-gray-500 text-xs mt-0.5">
             Paid
           </div>
@@ -208,9 +244,11 @@ const PaymentsTable = () => {
 
         <div className="border rounded-xl p-4 bg-yellow-500/10 border-yellow-500/20">
           <div className="text-2xl mb-2">⚠️</div>
+
           <div className="font-bebas text-3xl tracking-wider text-yellow-400">
             {dueCount}
           </div>
+
           <div className="text-gray-500 text-xs mt-0.5">
             Due
           </div>
@@ -218,9 +256,11 @@ const PaymentsTable = () => {
 
         <div className="border rounded-xl p-4 bg-red-500/10 border-red-500/20">
           <div className="text-2xl mb-2">❌</div>
+
           <div className="font-bebas text-3xl tracking-wider text-red-400">
             {overdueCount}
           </div>
+
           <div className="text-gray-500 text-xs mt-0.5">
             Overdue
           </div>
@@ -228,9 +268,11 @@ const PaymentsTable = () => {
 
         <div className="border rounded-xl p-4 bg-red-600/10 border-red-600/20">
           <div className="text-2xl mb-2">💰</div>
+
           <div className="font-bebas text-3xl tracking-wider text-red-500">
             ₹{totalAmount.toLocaleString()}
           </div>
+
           <div className="text-gray-500 text-xs mt-0.5">
             Total Collected
           </div>
@@ -280,7 +322,12 @@ const PaymentsTable = () => {
                   </td>
 
                   <td className="px-6 py-4 text-gray-400 text-sm">
-                    {payment.month}
+                    {payment.month
+                      ? new Date(payment.month).toLocaleDateString('en-IN', {
+                          month: 'long',
+                          year: 'numeric',
+                        })
+                      : '—'}
                   </td>
 
                   <td className="px-6 py-4 text-white font-medium">
@@ -429,7 +476,8 @@ const PaymentsTable = () => {
                   Month
                 </label>
 
-                <select
+                <input
+                  type="month"
                   value={form.month}
                   onChange={(e) =>
                     setForm({
@@ -438,13 +486,7 @@ const PaymentsTable = () => {
                     })
                   }
                   className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-gray-400 text-sm"
-                >
-                  {months.map((m) => (
-                    <option key={m} value={`${m} ${new Date().getFullYear()}`}>
-                      {m} {new Date().getFullYear()}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
 
               {/* STATUS */}
@@ -493,8 +535,7 @@ const PaymentsTable = () => {
               <button
                 type="submit"
                 disabled={saving}
-                className="w-full py-3.5 mt-2 bg-red-600 hover:bg-Replace: red-700
- text-white text-xs uppercase rounded-lg"
+                className="w-full py-3.5 mt-2 bg-red-600 hover:bg-red-700 text-white text-xs uppercase rounded-lg"
               >
                 {saving ? 'Saving...' : 'Save Payment'}
               </button>

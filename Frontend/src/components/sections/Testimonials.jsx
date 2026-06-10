@@ -3,67 +3,67 @@ import { useState } from 'react'
 const testimonials = [
   {
     name: 'HARPREET KAUR',
+    initials: 'HK',
     location: 'Ludhiana',
     plan: 'Pro Member',
     result: '-18kg in 4 months',
-    review: 'Muscle Vault ne meri life completely badal di. Rajveer sir ki training aur Simran ma\'am ki diet plan se mujhe 4 mahine mein 18kg weight loss hua. Yahan ka atmosphere bahut motivating hai — sab log ek doosre ko support karte hain.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80',
-    initials: 'HK',
+    review:
+      'Muscle Vault completely transformed my lifestyle. With expert training and a personalized nutrition plan, I achieved my weight-loss goals faster than I imagined. The supportive community keeps me motivated every day.',
     rating: 5,
     date: 'March 2025',
   },
   {
     name: 'MANPREET SINGH',
+    initials: 'MS',
     location: 'Jalandhar',
     plan: 'Elite Member',
     result: '+12kg Muscle in 6 months',
-    review: 'Main 2 saal se Muscle Vault ka member hoon. Equipment top-notch hai, trainers bahut knowledgeable hain aur facility hamesha clean rehti hai. Jo results mile hain woh kisi aur gym mein possible nahi the.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80',
-    initials: 'MS',
+    review:
+      'The equipment is top-notch, the trainers are highly knowledgeable, and the facility is always clean and professional. The results I achieved here exceeded all my expectations.',
     rating: 5,
     date: 'February 2025',
   },
   {
     name: 'GURPREET BHATIA',
+    initials: 'GB',
     location: 'Ludhiana',
     plan: 'Starter Member',
     result: 'Lost 8kg in 2 months',
-    review: 'Pehle gym join karne mein dar lagta tha kyunki beginner tha. Lekin yahan sab ne bahut achhe se guide kiya. Arjun sir ne cardio plan banaya aur 2 mahine mein hi fark dikha. Ab Elite plan le liya!',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80',
-    initials: 'GB',
+    review:
+      'As a beginner, I was nervous about joining a gym, but the trainers guided me every step of the way. Within just two months, I started seeing real progress and gained confidence.',
     rating: 5,
     date: 'January 2025',
   },
   {
     name: 'NAVNEET SHARMA',
+    initials: 'NS',
     location: 'Ludhiana',
     plan: 'Pro Member',
     result: 'Complete Body Transformation',
-    review: 'Best gym in Punjab hands down. Modern equipment, expert trainers, aur ek community jo genuinely chahti hai ki tum succeed karo. Membership ka price bilkul value for money hai.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80',
-    initials: 'NS',
+    review:
+      'A modern facility, expert coaching, and a motivating community make this one of the best fitness experiences I have ever had. Every membership plan delivers excellent value.',
     rating: 5,
     date: 'April 2025',
   },
   {
     name: 'VIKRAM MALHOTRA',
+    initials: 'VM',
     location: 'Phagwara',
     plan: 'Elite Member',
     result: 'Marathon Runner Now',
-    review: 'Cardio training ke liye koi better jagah nahi hai Ludhiana mein. Arjun sir ki guidance se maine apni first half marathon complete ki. Unka structured approach aur motivation level unmatched hai.',
-    image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=200&q=80',
-    initials: 'VM',
+    review:
+      'The structured cardio training program helped me complete my first half marathon. The guidance and motivation from the trainers were exceptional throughout the journey.',
     rating: 5,
     date: 'April 2025',
   },
   {
     name: 'RAJAN DEEP',
+    initials: 'RD',
     location: 'Ludhiana',
     plan: 'Pro Member',
     result: 'Consistent for 1 Year',
-    review: 'Jo gym mein consistency maintain karna mushkil lagta tha woh yahan easy ho gaya. Staff ka attitude bahut friendly hai aur facility 24/7 clean rehti hai. Highly recommend!',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80',
-    initials: 'RD',
+    review:
+      'Maintaining consistency became much easier thanks to the friendly staff, positive environment, and well-maintained facilities. Highly recommended for anyone serious about fitness.',
     rating: 5,
     date: 'March 2025',
   },
@@ -123,17 +123,25 @@ const Testimonials = () => {
             <div className="flex flex-col items-center lg:items-start gap-4">
 
               {/* Avatar */}
-              <div className="relative">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-red-600">
-                  <img
-                    src={testimonials[active].image}
-                    alt={testimonials[active].name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Online dot */}
-                <div className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-[#111]"/>
-              </div>
+              {/* Featured Avatar - Replace old image avatar code with this */}
+
+<div className="relative">
+  <div
+    className="
+      w-20 h-20 rounded-full
+      border-2 border-red-600
+      bg-red-600/10
+      flex items-center justify-center
+    "
+  >
+    <span className="font-bebas text-2xl tracking-wider text-red-600">
+      {testimonials[active].initials}
+    </span>
+  </div>
+
+  {/* Online dot */}
+  <div className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-[#111]" />
+</div>
 
               {/* Name + info */}
               <div className="text-center lg:text-left">
@@ -253,14 +261,28 @@ const Testimonials = () => {
               `}
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-red-600/30">
-                  <img src={t.image} alt={t.name} className="w-full h-full object-cover"/>
-                </div>
-                <div>
-                  <div className="text-white text-xs font-medium tracking-wider">{t.name}</div>
-                  <div className="text-red-600 text-xs">{t.result}</div>
-                </div>
-              </div>
+  <div
+    className="
+      w-10 h-10 rounded-full
+      border border-red-600/30
+      bg-red-600/10
+      flex items-center justify-center
+    "
+  >
+    <span className="font-bebas text-sm tracking-wider text-red-600">
+      {t.initials}
+    </span>
+  </div>
+
+  <div>
+    <div className="text-white text-xs font-medium tracking-wider">
+      {t.name}
+    </div>
+    <div className="text-red-600 text-xs">
+      {t.result}
+    </div>
+  </div>
+</div>
               <p className="text-gray-600 text-xs leading-relaxed line-clamp-2">
                 {t.review}
               </p>
