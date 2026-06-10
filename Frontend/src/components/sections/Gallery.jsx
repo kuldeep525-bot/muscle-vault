@@ -3,7 +3,7 @@ import { useState } from 'react'
 const images = [
   {
     // src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80',
-    src:"/images/img1.jpeg",
+    src:"/images/img1.webp",
     title: 'Main Gym Floor',
     category: 'facility',
     span: 'lg:col-span-2 lg:row-span-2',
@@ -16,7 +16,7 @@ const images = [
   },
   {
     // src: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80',
-    src:"/images/img6.jpeg",
+    src:"/images/img6.webp",
     title: 'Personal Training',
     category: 'training',
     span: '',
@@ -28,7 +28,7 @@ const images = [
     span: '',
   },
   {
-    src: '/images/img4.jpeg',
+    src: '/images/img4.webp',
     title: 'Free Weights Area',
     category: 'equipment',
     span: '',

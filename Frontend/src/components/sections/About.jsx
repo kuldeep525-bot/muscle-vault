@@ -14,7 +14,7 @@ const About = () => {
             {/* Main image */}
             <div className="relative rounded-lg overflow-hidden aspect-[4/3] border border-white/5">
               <img
-                src="/images/img6.jpeg"
+                src="/images/img6.webp"
                 alt="Gym Interior"
                 className="w-full h-full object-cover opacity-75"
               />

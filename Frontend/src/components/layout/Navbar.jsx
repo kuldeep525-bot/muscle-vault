@@ -62,7 +62,7 @@ const Navbar = () => {
         {/* LOGO */}
 <Link to="/" className="flex items-center gap-3">
   <img
-    src="/images/gym_logo1.png"
+    src="/images/gym_logo1.webp"
     alt="Muscle Vault Logo"
     className="
       h-10
